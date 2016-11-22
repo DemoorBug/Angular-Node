@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>node-mongodb建站</title>
+<style type="text/css">
+*{padding:0;margin:0;font-size:24px;font-family:'微软雅黑';background:#f7f7ff}script{display:none}body{padding-left:20px}strong{display:inline-block;padding:5px 130px;margin:0 auto;text-align:center;background:#02a2bd;color:#fafffa;border:1px dotted #CCC}i{display:inline-block;font-style:normal;font-weight:bolder;color:red;background:#FFF;padding:5px 6px}b{display:inline-block;font-style:normal;font-weight:bolder;color:green;background:#FFF;margin:5px 0;padding:5px 6px;border-top:1px dotted #CCC;border-bottom:1px dotted #CCC}a{display:inline-block;font-style:normal;text-decoration:none;font-weight:bolder;color:blue;background:#FFF;margin:5px 0;padding:5px 6px;border-top:1px dotted #CCC;border-bottom:1px dotted #CCC;cursor:pointer}ul{list-style:none;text-align:center}ul li{display:inline-block}ul li a{float:left;font-size:16px;color:green}.c{position:fixed;right:50px;bottom:20px;height:50px;width:50px;text-align:center;line-height:40px;border:0}u{display:inline-block;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:10px solid green;background:0}sup{font-size:14px;background:0}em{overflow:hidden;height:29px;cursor:pointer}em,em i,em b{margin:10px;border-radius:4px;background-color:#FFF;padding:10px;font-size:13px;display:block;font-style:normal}em i,em b{font-size: 20px; padding: 10px 0;margin: 0}
+</style>
+
+</head>
+<body>
+<ul></ul>
+<strong>置顶</strong>
+数据绑定：当js中的变量改变时，他会自动更新自己所影响的试图模型，原来是这样，so
+
+
+
+<strong>第五讲表达式和数据绑定</strong>
+<em>表达式是AngularJs模板引擎的重要内容，也是视图View的必要的组成部分，用来将模型动态转换为可视的DOM元素或者其内容({{}} 这就是表达式 'Hello'常量  num 变量)
+
+<b>表达式的形式:</b>
+1).常量: {{'hello,Word'}},{{123}},{{true}},{{[1,2,3]}}
+  a) 注意：使用常量的形式，不能使用对象{{{a:'aaa'}}}
+2).变量(重要)： {{num}}
+3).函数(重要)： {{fn()}} 函数形式
+4). 表达式: {{a+b}}  {{a&&b}} {{c?'yes' : 'no'}} 三元表达式
+  a). 注意：条件语句不能再表达式中使用(如：if()else{},switch,while(){} )
+
+<b>模型声明的几种形式：</b>
+<i>$scope本身是域，那么作用域对象在angular里面其实就是module的这个角色，那么我们声明模型就在Scope上面去声明变量：</i>
+1). $scope.a = 'hello.world'
+2). ng-init="a='s';b=123"   可以声明多个，所有数据类型都可以声明
+3). ng-model 双向数据绑定
+
+</em>
+
+<strong>第四节控制器和作用域</strong>
+<em>控制器：在angularJs中控制器是一个函数，用来向试图的作用域里面添加额外的功能(可能是函数也可能是操作数据的操作)，主要是来设置作用域的初始状态并添加自定义行为。
+
+<b>控制器的声明：</b>
+ * 定义控制器myController
+ * 第一个参数是控制器的名称
+ * 第二个参数是控制器的具体定义，务必添加$scope(作用域对象)
+app.controller('myController',function($scope){
+$scope 就是上面所说的作用域
+})
+<b>控制器的使用：</b>
+在需要的地方(html某个标签上)添加ng-controller这个指令
+<b>注意事项:</b>
+1).控制器中尽量保持简洁,也就是说我们在这里面只做一件事情$scope预模型对象初始化(主要是来设置作用域的初始状态并添加自定义行为)类似add函数，num设置初始值一些自定义行为
+2).尽量只和$scope打交道
+3).不能做一些复杂的数据访问
+4).Ajax请求
+5).或者进行DOM操作(不是不可以，是官方建议，因为这样违反了mvc的架构思想，发生了数据耦合)
+6).格式化，数据操作都不应该
+<b>控制器嵌套：</b>
+不推荐这种  好像大漠穷秋老师讲的是 server 服务
+嗯，应该就是这样，哎呀呀  听那个老师听的迷的，还是这个好理解，100分
+
+</em>
+
+<strong>第三节模块Module</strong>
+<em> *使用angular.module()创建应用程序模块
+ *第一个参数是模块名称
+ *第二个是依赖模块数组
+<b>angular.module('Myapp',[])</b>
+
+
+<b>使用模块的好处：</b>
+1).保持全局命名空间的清洁
+2).编写测试代码更容易
+3).易于在不同的应用程序之间复用代码。也就是提高代码的复用性
+</em>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+window.onload=function(){(function(){var htm=document.getElementsByTagName("body")[0];htm.innerHTML=htm.innerHTML.replace(/\n/g,"<br/>").replace(/ /g,"&nbsp;").replace(/\t/g,"&nbsp;&nbsp;&nbsp;&nbsp;").replace(/<strong>/g,"----------------------------------------<br/><br/><strong>").replace(/`/g," ")})();(function(){var htm=document.getElementsByTagName("a");for(var i=0;i<htm.length;i++){htm[i].target="_blank";htm[i].href=htm[i].innerHTML}})();(function(){var str=document.getElementsByTagName("strong");var mao=document.getElementsByTagName("ul")[0];var links=[];for(var i=0;i<str.length;i++){var strs=str[i].innerHTML.replace(/&nbsp;/g,"--");str[i].id=strs;links.push('<li><a href="#'+strs+'">'+strs+"</a></li>")}links.push('<a class="c" href="#"><u></u></a>');mao.innerHTML=links.join(" ")})();(function(){var is=document.getElementsByTagName("em");for(var i=0;i<is.length;i++){is[i].onclick=function(){if(this.style.overflow!="visible"){this.style.overflow="visible";this.style.height="auto";this.style.fontSize="20px"}else{this.style.overflow="hidden";this.style.height="29px";this.style.fontSize="13px"}}}})()};
+</script>
+
+</body>
+</html>

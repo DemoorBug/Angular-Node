@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular+Node</title>
+  <link rel="stylesheet" href="../node_modules/angular/angular-csp.css">
+</head>
+<body ng-controller="myController" ng-init="a='s'">
+<button ng-click="add()">增加</button>
+<div ng-bind="num"></div>
+
+<!-- 测试控制器嵌套 -->
+
+<div ng-controller="myController2">
+  <button ng-click="add()">增加2</button>
+  <div>{{num}}{{fn(1,3)}}</div>
+</div>
+
+<script src="../node_modules/angular/angular.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
