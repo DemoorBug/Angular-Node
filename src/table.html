@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>ng-Class</title>
+  <link rel="stylesheet" href="../node_modules/angular/angular-csp.css">
+  <style type="text/css">
+
+  </style>
+</head>
+<body ng-controller="myController">
+<table>
+  <tr>
+    <td>单价</td>
+    <td>数量</td>
+    <td>小计</td>
+  </tr>
+  <tr>
+    <td><input type="text" ng-model="danj"></td>
+    <td><input type="text" ng-model="shul"></td>
+    <td ng-bind="danj*shul"></td>
+  </tr>
+  <tr>
+    <td><input type="text" ng-model="danj2"></td>
+    <td><input type="text" ng-model="shul2"></td>
+    <td>{{danj2*shul2|currency:'￥'}}</td>
+  </tr>
+  <tr>
+    <td colspan="3">总价：<input type="text" ng-value="totl"></td>
+  </tr>
+</table>
+
+<h1 ng-bind="b|date:'yyyy-MM-dd'"></h1>
+<h1>{{12332443.3211|number:2}}</h1>
+<h1>{{'伺服电机无二哦iu我去诶UI哦全文'|limitTo:10}}</h1>
+<h1>{{[1,2,3]|limitTo:2}}</h1>
+<script src="../node_modules/angular/angular.js"></script>
+<script src="js/table.js"></script>
+</body>
+</html>

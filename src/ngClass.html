@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>ng-Class</title>
+  <link rel="stylesheet" href="../node_modules/angular/angular-csp.css">
+  <style type="text/css">
+    body{font-family: "微软雅黑"}
+    h2 {line-height: 50px; text-align: center;border-top: 0px solid #eee;margin-bottom: 10px;box-shadow: 1px 1px 2px #eee;}
+    input,div,select {box-shadow: 1px 1px 2px #eee;background-color: #FFF;color:#000;width: 50%; line-height: 30px; margin: 10px auto;display: block;border: none;padding: 5px; border-radius: 5px;}
+    input {background-color: #eee;}
+    .red {color: red;}
+    .blue {color: blue;}
+    .border {border: 1px solid #ccc;}
+  </style>
+</head>
+<body ng-controller="myController" ng-init="a='s'">
+
+<!--  -->
+<h2>表达式</h2>
+<input type="text" ng-model="myClass" placeholder="请输入red,blue或border">
+<!-- 表达式结果为字符串 -->
+<div ng-class="myClass">表达式结果为字符串</div>
+<!-- 表达式可以是数组 -->
+<div ng-class="myArray">表达式可以是数组</div>
+<!-- 表达式为对象 -->
+<div ng-class="myObject">表达式为对象</div>
+
+
+<!-- ng-hide -->
+<h2>ng-hide</h2>
+<input type="checkbox" ng-model="hide">
+<div ng-class="myObject" ng-hide="hide">ng-hide</div>
+<!-- ng-show -->
+<h2>ng-show</h2>
+<input type="checkbox" ng-model="show">
+<div ng-class="myObject" ng-show="show">ng-show</div>
+
+<!-- ng-if -->
+<h2>ng-if</h2>
+<input type="checkbox" ng-model="if">
+<div ng-class="myObject" ng-if="if">ng-if</div>
+
+<!-- ng-readonly -->
+<h2>ng-readonly</h2>
+<input type="text" ng-readonly="isReadonly">
+<input type="checkbox" ng-model=isReadonly>
+
+<!-- ng-selected -->
+<h2>ng-selected</h2>
+<input type="checkbox" ng-model=isSelected>
+<select>
+  <option value="010">北京</option>
+  <option value="011" ng-selected="isSelected">上海</option>
+</select>
+
+<!-- ng-src -->
+<h2>ng-src</h2>
+<input type="text" ng-model="src" >
+<img ng-src="{{src}}">
+
+<!-- ng-value -->
+<h2>ng-value</h2>
+<input type="text" ng-value="src">
+
+<!-- ng-style -->
+<h2>ng-style</h2>
+<input Type="button" value="set color" ng-click="myStyle={color:'red'}">
+<input Type="button" value="set background" ng-click="myStyle={'background-color':'blue'}">
+<input Type="button" value="clear" ng-click="myStyle={}"><br/>
+<div ng-style="myStyle">Sample Text</div>
+<div>myStyle={{myStyle}}</div>
+<script src="../node_modules/angular/angular.js"></script>
+<script src="js/ngClass.js"></script>
+</body>
+</html>

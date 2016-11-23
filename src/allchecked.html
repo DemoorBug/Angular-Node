@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>全选</title>
+  <link rel="stylesheet" href="../node_modules/angular/angular-csp.css">
+</head>
+<body ng-controller="myController" ng-init="a='s'">
+
+<!-- 单项数据绑定和双向数据绑定结合，实现表格项目的全选 -->
+
+<table>
+  <tr>
+    <td>全选 <input type="checkbox" ng-model="ync"> </td>
+    <td>姓名</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" ng-checked="ync" ng-model="ync_0" ng-change="if()"> </td>
+    <td>top</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" ng-checked="ync"  ng-model="ync_1" ng-change="if()"> </td>
+    <td>jeck</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" ng-checked="ync"  ng-model="ync_2" ng-change="if()"> </td>
+    <td>tmo</td>
+  </tr>
+</table>
+
+<script src="../node_modules/angular/angular.js"></script>
+<script src="js/allchecked.js"></script>
+</body>
+</html>

@@ -12,9 +12,68 @@
 <ul></ul>
 <strong>置顶</strong>
 数据绑定：当js中的变量改变时，他会自动更新自己所影响的试图模型，原来是这样，so
+ng-change  input发生改变，则触发
+ng-click  点击触发
 
 
+<strong>第十讲过滤器1</strong>
+<b>对应案例table.html:33</b>
+<em>可以对输入的值按照指定的方案进行处理后再输出的函数
+<b>过滤器</b>
+1). 货币过滤器 {{danj2*shul2|currency}}，{{danj2*shul2|currency:'￥'}}
+2). 日期过滤器:date {{new Date()|date:'yyyy-MM-dd'}}
+3). 数字过滤器:number,格式化数字 {{123234.2356|number:2}}
+4). limitTo: 限制长度  {{'伺服电机无二哦iu我去诶UI哦全文'|limitTo:10}} 对数组也是有用的 {{[1,2,3]|limitTo:2}}
+5). lowercase 转换字符串为小写形式
+6). uppercase 转换字符串为大写形式
+7). orderBy
+9). filter
+</em>
+<strong>第九讲数据绑定和表达式五</strong>
+<b>对应案例table.html</b>
+<em>$scope.$watch 是angular内置函数 预模型的观察和监控
+绑定表达式可以使用$watch的方式监控
+接收一个表达式...
+scope.$watch('expression',function(newVal,oldVal){})
+</em>
+<strong>第八讲数据绑定和表达式四</strong>
+<b>对应案例ngClass.html</b>
+<i>此讲是第二讲的续。所以备注到了第二讲，特此说明</i>
 
+<strong>第七讲数据绑定和表达式三</strong>
+<b>对应案例ngClass.html</b>
+<i>此讲是第二讲的续。所以备注到了第二讲，特此说明</i>
+<strong>第六讲数据绑定和表达式二</strong>
+<b>对应案例ngClass.html</b>
+<em><b>变量声明,和上节总结</b>
+ 1). 常量{{'abc'}}
+ 2). 变量{{abc}}
+    a). 变量声明: $scope.abc='abc';
+    b). 变量声明: ng-init="" 不推荐：module和view之间产生了耦合，这种形式常用于小程序的测试和展示但不适合用于生产，不利于后期的维护重用
+    c). 变量声明: ng-model
+ 3). 函数{{fn( )}}
+ 4). 表达式{{a+b}}
+<b>数据绑定</b>
+<i>将模型的Model 和试图 View关联起来，双方的改变都能影响到对方</i>
+数据绑定类型：
+1). 单项数据绑定:模型能够影响试图，反之则不行
+  a) 简写形式： {{abc}}
+  b) 指令形式：
+    i: ng-bind=''  是简写形式的替代，最佳实践是在首页使用ng-bind形式，其他页面使用简写形式。
+    ii: ng-checked: 绑定radio和checkbox这种类型表单元素和选中状态
+    iii: ng-class
+    iv: ng-hide/ng-show: 是否显示/隐藏HTML元素
+    v: ng-if: 直接隐藏代码 和jq的appendTo()很像
+    vi: ng-readonly: 是否只读
+    vii: ng-selected: 是否选择，主要用于select下拉列表
+    viii: ng-src: 用于设置img元素图片url
+    ix: ng-value: 设置输入框的值,单向初始化值
+    x: ng-style: 动态设置样式
+  c) 所谓单向，model会影响view ，但view不会影响model
+2). 双线数据绑定:模型和试图可以相互影响
+  a) 双向数据绑定自己会声明，ng-model="username";相当于controller里面声明
+  $scope.username. 厉害了
+</em>
 <strong>第五讲表达式和数据绑定</strong>
 <em>表达式是AngularJs模板引擎的重要内容，也是视图View的必要的组成部分，用来将模型动态转换为可视的DOM元素或者其内容({{}} 这就是表达式 'Hello'常量  num 变量)
 

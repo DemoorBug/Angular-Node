@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular+Node</title>
+  <link rel="stylesheet" href="../node_modules/angular/angular-csp.css">
+</head>
+<body ng-controller="myController" ng-init="a='s'">
+
+<!-- ng-checked:绑定radio和checkbox这种类型表单元素和选中状态 -->
+<input type="radio" ng-checked="tr" />
+<input type="checkbox" ng-checked="tf" ng-change="fn()" ng-model="a" />
+{{num}}
+<input type="text" ng-model='num' ng-change="nums()">
+
+<script src="../node_modules/angular/angular.js"></script>
+<script src="js/bind.js"></script>
+</body>
+</html>
