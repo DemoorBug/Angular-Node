@@ -1,0 +1,21 @@
+{
+  "name": "angular",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "DemoorBug <1004041672@qq.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/DemoorBug/Angular-Node",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
