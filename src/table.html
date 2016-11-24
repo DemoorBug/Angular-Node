@@ -102,7 +102,13 @@
     <td ng-bind="friend.phone"></td>
   </tr>
 </table>
-
+<div class="form-group clearfix form-horizontal">
+<label class="col-md-3 control-label">自定义过滤器：首字母转换大写</label>
+<div class="col-md-7">
+<input type="text" class="form-control" ng-model="name" placeholder="首字母转换大写">
+</div>
+<button class="btn btn-default" ng-bind="name|capitalize"></button>
+</div>
 <script src="../node_modules/angular/angular.js"></script>
 <script src="js/table.js"></script>
 </body>

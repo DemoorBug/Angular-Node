@@ -15,6 +15,40 @@
 ng-change  input发生改变，则触发
 ng-click  点击触发
 ng-repeat(重要): 用来将数据集合按照指定的形式重复渲染出来 详见table.html:38
+
+<strong>指令1</strong>
+<b>对应案例directive.html</b>
+<em>指令-directive
+已经学过的内置指令
+ng-app/ng-contorller/ng-init/ng-model/ng-bind/ng-value/ng-change/ng-click/ng-repeat
+<b>第一个自定义指令</b>
+app.directive('myDirective',function(){
+  return {
+    template:....
+  }
+})
+//命名约定：使用驼峰写法，大写字母处在使用的时候需要用'-'隔空
+1). 使用指令的四种形式：
+  a) 属性(A)
+  b) 标签(E)element
+  c) 类(C)class
+  d) 注释(M)
+    i) < !-- directive:my-directive -->
+  注意：从浏览器的兼容方面考虑，建议使用A或E
+2). replace: 替换掉指令标签，使用户看不到指令，而只能看到最终生成的DOM元素
+3). 向指令中传递参数：
+  a) 使用元素所属的作用域中的变量
+    i) 缺点:很明显，指令对控制器产生依赖，如果控制器被移除，或者控制器中也需要这个变量名，产生命名冲突。
+  b) 通过隔离作用域初始化参数
+
+<b>使用隔离作用域</b>
+1.传递布尔值，默认为false,意为不使用隔离作用域,设置为true
+scope: {...}  更有意义的设置：
+  a) @:可以直接从属性中获取值
+  b) =:可以传递表达式
+  c) &:可以传递函数(通常作为回掉函数)
+    i) 这里的函数是执行的了，而且在template里面还要执行。。可以用=解决啊。搞不懂哦
+</em>
 <strong>第十三讲过滤器三</strong>
 <em>回顾:
 1). orderBy 排序
@@ -28,7 +62,7 @@ $filter('orderBy')(array, expression, reverse)
 <b>自定义过滤器</b>
 过滤器属于服务(service)的一种，类似conrtoller,可以自定义实现所需的功率功能，称为自定义过滤器
 定义方式如下:
-1)
+详见table.html:105
 </em>
 <strong>第十讲过滤器1</strong>
 <b>对应案例table.html:33</b>

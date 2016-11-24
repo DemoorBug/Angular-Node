@@ -32,3 +32,13 @@ app.controller('myController',function($scope,$filter){
     $scope.friends = $filter('orderBy')($scope.friends,field,reverse)
   }
 })
+  //自定义一个大写过滤器：可以将输入字符串的第一个字母变成大写
+  //{{'name'|capitalize:prom1:prom2}}  对应function(input,prom1,prom2)厉害了
+app.filter('capitalize',function(){
+  return function(input){
+    //input就是要过滤的字符串
+    if(input==undefined) input='0';
+    else if(input=="") input='1'
+    return input[0].toUpperCase()+input.substr(1);
+  }
+})

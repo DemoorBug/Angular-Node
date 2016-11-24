@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myModule">
+<head>
+  <meta charset="UTF-8">
+  <title>自定义指令</title>
+  <link rel="stylesheet" href="../public/libs/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-controller="myController">
+
+<div class="form-group form-horizontal clearfix">
+  <label class="control-label col-md-2">输入链接</label>
+  <div class="col-md-10">
+    <input type="text" class="form-control" ng-model="Url">
+  </div>
+</div>
+
+<!-- 属性形式 -->
+<div class="row">
+  <div my-directive my-url="Url" my-link-text="百度" my-click="myC()"></div>
+  <!-- 标签形式 -->
+  <my-directive></my-directive>
+  <!-- 类形式 -->
+  <div class="my-directive"></div>
+  <!-- directive:my-directive -->
+</div>
+<script src="../node_modules/angular/angular.js"></script>
+<script src="js/directive.js"></script>
+</body>
+</html>
