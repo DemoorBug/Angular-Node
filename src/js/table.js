@@ -11,10 +11,24 @@ var app = angular.module('myApp',[]);
  *
  */
 
-app.controller('myController',function($scope){
+app.controller('myController',function($scope,$filter){
   $scope.$watch('danj*shul+danj2*shul2',function(newVal,oldVal){
     $scope.totl = $scope.danj*$scope.shul+$scope.danj2*$scope.shul2
   })
 
   $scope.b = new Date();
+
+  $scope.friends = [
+    {name:'john',phone:555+'-'+1234},
+    {name:'jack',phone:234+'-'+1234},
+    {name:'jm',phone:987+'-'+1234},
+    {name:'timou',phone:119+'-'+1234},
+    {name:'mods',phone:098+'-'+1234}
+  ]
+
+  $scope.reverse = true;
+
+  $scope.order = function(field,reverse){
+    $scope.friends = $filter('orderBy')($scope.friends,field,reverse)
+  }
 })

@@ -14,8 +14,22 @@
 数据绑定：当js中的变量改变时，他会自动更新自己所影响的试图模型，原来是这样，so
 ng-change  input发生改变，则触发
 ng-click  点击触发
-
-
+ng-repeat(重要): 用来将数据集合按照指定的形式重复渲染出来 详见table.html:38
+<strong>第十三讲过滤器三</strong>
+<em>回顾:
+1). orderBy 排序
+2). filter 过滤  筛选类似搜索功能
+3). ng-repeat: 迭代
+<b>使用js调用过滤器</b>详见table.html:81
+$filter('orderBy')(array, expression, reverse)
+注意事项
+1) 需要依赖注入$filter
+2) 排序执行以后并不改变原数组，二手返回排序后的新数组
+<b>自定义过滤器</b>
+过滤器属于服务(service)的一种，类似conrtoller,可以自定义实现所需的功率功能，称为自定义过滤器
+定义方式如下:
+1)
+</em>
 <strong>第十讲过滤器1</strong>
 <b>对应案例table.html:33</b>
 <em>可以对输入的值按照指定的方案进行处理后再输出的函数
@@ -26,8 +40,10 @@ ng-click  点击触发
 4). limitTo: 限制长度  {{'伺服电机无二哦iu我去诶UI哦全文'|limitTo:10}} 对数组也是有用的 {{[1,2,3]|limitTo:2}}
 5). lowercase 转换字符串为小写形式
 6). uppercase 转换字符串为大写形式
-7). orderBy
-9). filter
+7). filter: 从array中选择一个子集，作为一个新数组返回(详见table.html:38)
+9). orderBy: 通过expression来排序指定的数组。字符串按照字母的顺序排序，数字呢按照大小排序
+  a). 注意：如果你发下数组没有正确排序，请确认他们保存的是数字而不是字符串
+  b). {{orderBy_expression|orderBy:expression:reverse}}
 </em>
 <strong>第九讲数据绑定和表达式五</strong>
 <b>对应案例table.html</b>
@@ -130,11 +146,6 @@ $scope 就是上面所说的作用域
 2).编写测试代码更容易
 3).易于在不同的应用程序之间复用代码。也就是提高代码的复用性
 </em>
-
-
-
-
-
 
 
 

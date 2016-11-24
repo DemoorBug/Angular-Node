@@ -4,29 +4,34 @@
   <meta charset="UTF-8">
   <title>ng-Class</title>
   <link rel="stylesheet" href="../node_modules/angular/angular-csp.css">
+  <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
   <style type="text/css">
 
   </style>
 </head>
-<body ng-controller="myController">
-<table>
+<body ng-controller="myController" style="width:80%;margin:0 auto">
+<table class="table table-striped table-hover">
   <tr>
-    <td>单价</td>
-    <td>数量</td>
-    <td>小计</td>
+    <th>单价</th>
+    <th>数量</th>
+    <th>小计</th>
   </tr>
   <tr>
-    <td><input type="text" ng-model="danj"></td>
-    <td><input type="text" ng-model="shul"></td>
+    <td><input class="form-control input-sm" type="text" ng-model="danj"></td>
+    <td><input class="form-control input-sm" type="text" ng-model="shul"></td>
     <td ng-bind="danj*shul"></td>
   </tr>
   <tr>
-    <td><input type="text" ng-model="danj2"></td>
-    <td><input type="text" ng-model="shul2"></td>
+    <td><input class="form-control input-sm" type="text" ng-model="danj2"></td>
+    <td><input class="form-control input-sm" type="text" ng-model="shul2"></td>
     <td>{{danj2*shul2|currency:'￥'}}</td>
   </tr>
   <tr>
-    <td colspan="3">总价：<input type="text" ng-value="totl"></td>
+    <td colspan="3" class="form-horizontal">
+    <label class="col-sm-2 control-label">总价：</label>
+    <div class="col-md-10">
+    <input class="form-control" type="text" ng-value="totl"></td>
+    </div>
   </tr>
 </table>
 
@@ -34,6 +39,70 @@
 <h1>{{12332443.3211|number:2}}</h1>
 <h1>{{'伺服电机无二哦iu我去诶UI哦全文'|limitTo:10}}</h1>
 <h1>{{[1,2,3]|limitTo:2}}</h1>
+
+
+<!-- .$ 代表任意 -->
+<h1>filter:searchText:strict</h1>
+<div class="form-group clearfix">
+<div class="col-md-4">
+<input class="form-control" type="text" ng-model="searchText.$">
+</div>
+<div class="col-md-4">
+<input class="form-control " type="text" ng-model="searchText.name">
+</div>
+<div class="col-md-4">
+<input class="form-control " type="text" ng-model="searchText.phone">
+</div>
+</div>
+<!-- 严格模式 -->
+<!-- <input class="form-control" type="checkbox" ng-model="strict"> -->
+<table class="table table-striped table-hover">
+  <tr>
+    <th>名称</th>
+    <th>电话</th>
+  </tr>
+  <tr ng-repeat="friend in friends|filter:searchText:strict">
+    <td ng-bind="friend.name"></td>
+    <td ng-bind="friend.phone"></td>
+  </tr>
+</table>
+
+<h1>orderBy:orderField:reverse  名称电话点击改变升序降序</h1>
+<table class="table table-striped table-hover">
+  <tr>
+    <th ng-click="orderField='name';reverse=!reverse"><button class="btn btn-default">姓名</button></th>
+    <th ng-click="orderField='phone';reverse=!reverse"><button class="btn btn-default">电话</button></th>
+  </tr>
+  <tr ng-repeat="friend in friends|orderBy:orderField:reverse">
+    <td ng-bind="friend.name"></td>
+    <td ng-bind="friend.phone"></td>
+  </tr>
+</table>
+
+<h1>orderBy:['-name','+phone']</h1>
+<table class="table table-striped table-hover">
+  <tr>
+    <th>名称</th>
+    <th>电话</th>
+  </tr>
+  <tr ng-repeat="friend in friends|orderBy:['-name','+phone']">
+    <td ng-bind="friend.name"></td>
+    <td ng-bind="friend.phone"></td>
+  </tr>
+</table>
+
+<h1>js</h1>
+<table class="table table-striped table-hover">
+  <tr>
+    <th ng-click="reverse=!reverse;order('name',reverse);"><button class="btn btn-default">姓名</button></th>
+    <th ng-click="reverse=!reverse;order('phone',reverse);"><button class="btn btn-default">电话</button></th>
+  </tr>
+  <tr ng-repeat="friend in friends">
+    <td ng-bind="friend.name"></td>
+    <td ng-bind="friend.phone"></td>
+  </tr>
+</table>
+
 <script src="../node_modules/angular/angular.js"></script>
 <script src="js/table.js"></script>
 </body>
