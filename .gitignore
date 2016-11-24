@@ -6,4 +6,4 @@
 node_modules
 dist
 public/libs
-bower-components
+bower_components
