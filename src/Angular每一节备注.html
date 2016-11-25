@@ -15,7 +15,90 @@
 ng-change  input发生改变，则触发
 ng-click  点击触发
 ng-repeat(重要): 用来将数据集合按照指定的形式重复渲染出来 详见table.html:38
+<strong>$('em').style.height='auto'</strong>
+<strong>指令6</strong>
+<em>
+AngularJS生命周期：
+编译阶段：遍历ng-app所包含的HTML文档并根据js中指令的定义来处理页面上生命的指令。将其转换为浏览器可识别的HTML内容。
+编译后会返回一个模板函数,在它被返回前，有机会对编译后的DOM树进行修改。
+这个机会就在 compile里面
+由于此时未进行数据绑定，操作DOM时性能开销很小，如ng-repeat和ng-transclude等内置的指令会在此时对DOM操作。
+<b>编译compile directive.js:128</b>
+普通用户在开发的时候很少使用
+设置为函数，该选项可以返回对象或函数
+<b>链接link</b>
+</em>
+<strong>指令5</strong>
+<b>directive.html:43</b>
+<em>
+  控制器Controller
+  控制器主要用于逻辑处理和控制,比如操作$scope中的模型，创建控制器的主要目的是可以吧共享的代码放在这里，供其他指令调用，设计到另外的require属性。
+  <b>导入 require directive.js:100详解用法</b>
+  在一个指令中可以注入其他指令的名称，因此就可以使用其控制器。
+  <b>controllerAs 控制器的别名 directive.js:116</b>
+  设置控制器别名以此发布控制器，且作用域可以访问controllerAs指定的别名
+</em>
+<strong>指令3</strong>
+<b>对应案例directive.html</b>
+<em>
+  <b>指令详解：</b>
+  指令可以使用的全部设置选项
+  retrict: String,  'AECM'
+  template: String or function(eElement,tAttrs){rerurn String},  //模板字符串
+  repeat: boolean, //是否用模板代替指令
+  priority: Number, //优先级
+  terminal: Boolean, //设为true时，如果存在优先级低于当前指令的其他指令，则忽略之
+  templateUrl:String,//Url字符串，指明模板文件存放地址
+  scope: Boolean or Object,//作用域
+  controller:String or function(scope,element,attrs,transclude),//控制器
+  transclude:Boolean,//设置为true表示当前指令中可以嵌入其他内容或指令
+  require:String or Array,//设置其他指令名称，可以注入这些指令控制当前指令使用
+  compile://返回一个对象或者编译函数
+    function(tElement,tAttrs,transclude){
+      return {
+        pre:function(scope,iElement,iAttrs,controller){},预处理
+        post: function(scope,iElement,iAttrs,controller){} 后处理
+      }
+    },
+  link: 设置了compile  link就不生效
+    function(scope,element,attrs,ctrl){//注入require才会有ctrl
 
+    }
+<i>tElement t代表模板 iElement i代表实例</i>
+<b>参数详解</b>
+优先级 priority
+多数指令会忽略该参数,使用其默认值0,少数指令优先级较高,如ng-repeat,优先级1000,保证其总是能够在其他指令之前执行。如果优先级相同,则在前面的先调用。
+
+终止 terminal
+设置true时,AngularJs将停止运行当前元素上比本指令优先级的指令，优先级相同的指令仍然运行。
+举例
+  < div ng-if="b" ng-view></ div>
+  ngif优先级略高于ngview,如果b==true,ngif为true,ngView将会执行，否则ngView将不起作用。
+
+模板template 案例位置directive.js:29 directive.html:27
+1) HTML文本
+2) 函数，参数为tElement何tAttrs,并返回一个代表模板的字符串。上面的t代表模板，相当于instance。
+  a) 注意：
+    i) 模板中科院包含表达式{{}}
+    ii) 如果含有多个DOM元素，或者只有一个单独文本节点构成，那他必须包含在一个父元素中，即必须包含一个根元素
+
+模板路径 templateUrl 案例位置directive.js:40 directive.html:31
+两种使用形式：
+1) 代表外部HTML文件路径的字符串
+2) 函数,参数tElement和tAttrs,返回外部HTML文件字符串
+注意：angular使用Ajax加载模板文件，开发时要运行一个本地服务器否则可能因长期错误
+加载编译和链接函数都会暂停，如果模板数量众多或体积较大时会影响性能。 缓存机制解决
+
+<i>第十八节指令5因为写到这里可读性较高，所以特此声明下</i>
+嵌入 transclude 案例位置directive.js:62 directive.html:39
+如果设置，其值必须为true，默认为false，嵌入常和作用域(scope)配合使用，创建一些可复用的组件。
+<b>作用域scope</b>
+1) 布尔值，默认为false,设置为true表示从父作用域继承并创建新作用域
+2) 对象，创建一个隔离作用域
+<b>对象,创建一个隔离作用域</b>
+绑定策略补充:可以指定属性名称而不必与隔离作用域中指定的对应
+@attr、=attr、&attr
+</em>
 <strong>指令1</strong>
 <b>对应案例directive.html</b>
 <em>指令-directive
