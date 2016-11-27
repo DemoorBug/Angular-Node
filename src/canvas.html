@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myCanvas">
+<head>
+  <meta charset="UTF-8">
+  <title>canvas演示使用directive和不使用的区别</title>
+</head>
+<body ng-controller="myController">
+<!-- 不使用指令时的写法 -->
+<canvas id="cvs">不支持画布</canvas>
+<script>
+  //获取画布上下文
+  var ctx = document.getElementById('cvs').getContext('2d');
+  ctx.fillRect(0,0,100,100); //绘制一个宽高为100的矩形
+</script>
+<input type="text" ng-model="config.x">
+<input type="text" ng-model="config.y">
+<my-canvas-ds s='config' ng-model="config"></my-canvas-ds>
+<script src="../node_modules/angular/angular.js"></script>
+<script src="js/canvas.js"></script>
+</body>
+</html>

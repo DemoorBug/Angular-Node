@@ -10,12 +10,50 @@
 </head>
 <body>
 <ul></ul>
+
 <strong>置顶</strong>
 数据绑定：当js中的变量改变时，他会自动更新自己所影响的试图模型，原来是这样，so
 ng-change  input发生改变，则触发
 ng-click  点击触发
 ng-repeat(重要): 用来将数据集合按照指定的形式重复渲染出来 详见table.html:38
 <strong>$('em').style.height='auto'</strong>
+
+
+
+<strong>多重视图和路由1</strong>
+<em>
+  <b>这个标题相关标签列出来</b>
+单页应用(SPA)中往往有多重视图，在他们之间导航称之为路由。ng-view作为视图容器
+ng-view 作为视图容器
+<b>路由的基本使用 route.html</b>
+1) 引入angular-route>添加模块angular.module('myApp',['ngRoute'])>创建布局模板，加入ng-view作为视图容器>配置路由>使用a进行路由或者注入$location实现视图路由
+
+<b>视图之间的路由方式：</b>
+1) 使用a进行路由
+2) 注入$location实现路由
+
+为什么需要第二种方式：
+为了给接下来的视图传递参数
+
+传递参数：
+1) 需要在路由配置这里配置参数设置，类似/default/:pid
+2) 跳转时: $location.path('/default/1')
+3) 获取参数: $routeParams.pid
+<i>这讲详细请看，route.js 和route.html查看详情</i>
+</em>
+<strong>其他视图指令</strong>
+<i>这个章节都在view里面，为了方便查找</i>
+<em>
+<b>前面所学汇总</b>
+  ng-if/ng-show/ng-hide/ng-repeat
+<b>新学</b>
+1) ng-switch //条件较多使用switch，更复杂的条件控制，配合on属性/ng-switch-when/ng-switch-default
+  a) view.html
+2) ng-include : 包含引入的意思，实际是加载外部HTML片段到当前页面中，适合创建页面模板的时，把公用的部分提取出来，然后用ngInclude引入。
+  a) view.html:15
+  b) 注意: 该指令会生成子作用域，如果希望使用其他作用域，则需要明确声明一个ng-controller="myControllerA"
+    i) < div ng-include="'tpl/header.html'" ng-controller="myControllerA">aaa</ div>
+</em>
 <strong>指令6</strong>
 <em>
 AngularJS生命周期：
@@ -27,6 +65,11 @@ AngularJS生命周期：
 普通用户在开发的时候很少使用
 设置为函数，该选项可以返回对象或函数
 <b>链接link</b>
+注意：如果设置了编译函数，链接函数就会失效，可以说他们是互斥的
+链接函数很常用，在这里可以进行DOM操作，
+
+<b>$setViewValue canvas.js:34</b>
+ ngModel控制器的$setViewValue(),可以动态更新视图的相关模型
 </em>
 <strong>指令5</strong>
 <b>directive.html:43</b>
@@ -163,7 +206,7 @@ $filter('orderBy')(array, expression, reverse)
   b). {{orderBy_expression|orderBy:expression:reverse}}
 </em>
 <strong>第九讲数据绑定和表达式五</strong>
-<b>对应案例table.html</b>
+<b>对应案例table.html canvas.js:37</b>
 <em>$scope.$watch 是angular内置函数 预模型的观察和监控
 绑定表达式可以使用$watch的方式监控
 接收一个表达式...
