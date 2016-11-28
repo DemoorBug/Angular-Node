@@ -1,4 +1,11 @@
 <div>哈哈
-<a ng-click="jumpTo('/default')">default</a>
+<a ng-click="jumpTo('/default/default')">default</a>
 <button class="btn btn-default" ng-click="jumpTo('/default/1')">default</button>
+<a href="#/default/2">23</a>
 </div>
+<ul class="list-unstyled">
+  <li ng-repeat="user in users">
+    <p ng-bind="user.name"></p>
+    <p ng-bind="user.age"></p>
+  </li>
+</ul>

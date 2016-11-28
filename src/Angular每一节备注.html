@@ -18,7 +18,37 @@ ng-click  点击触发
 ng-repeat(重要): 用来将数据集合按照指定的形式重复渲染出来 详见table.html:38
 <strong>$('em').style.height='auto'</strong>
 
+<strong>表单与验证</strong>
+<i>input/form2.html</i>
+<em>
+  <b>表单控件：input/select/textarea</b>
 
+
+</em>
+<strong>表单与验证</strong>
+<i>input/form.html</i>
+<em>
+  <b>表单声明</b>
+  < form name="myForm" ng-controller="myFromController"></ form>
+  *注意：如果声明name属性，表单控制器会被发布到name对应的作用域下
+  <b>表单嵌套：</b>
+  Angular中表单能够嵌套的，浏览器实际不允许，所以angular提供了ngForm指令来实现之
+  <b>提交表单</b>
+  1.form元素上添加ngSubmit指令并添加一个type为submit的input触发提交行为
+  2.在第一个按钮或类型为submit的input字段上添加ngClick指令
+  注意：为了防止处理程序的双重执行，只能使用上面两种方式的其中之一；第一种较为常用
+</em>
+<strong>多重试图与路由三</strong>
+<em>
+  <b>路由配置详解：</b>
+  templateUrl: 指定模板所存在的地址
+  template: 指定模板html(不常用)
+  controller: 控制器，设置为字符串则是当前模块中查询相对应的控制器的定义并作用域当前的试图。
+  redirectTo: 如果匹配不到任何合法URL则重定向到/页面 用于otherwise的配置中，用来当匹配不到合适的地址时，跳转至指定的路径去。
+  reloadOnSearch: 当url地址中的查询串发生变化的时候，是否重新的加载页面，假如设置为true,当url中的查询串(?后面的部分)发生变化，页面就重新去加载。(比如实现分页?page=3)
+  resolve: 在路由发生之前获取数据,和服务端打交道，应该是这样
+  <i>详细案例route.js </i>
+</em>
 
 <strong>多重视图和路由1</strong>
 <em>

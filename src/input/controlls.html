@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-cn" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>表单控件使用</title>
+  <link rel="stylesheet" type="text/css" href="../../public/libs/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-controller="myFromController">
+<!-- 表单控件声明和使用 -->
+<form name='myForm' ng-submit='submit()' class="form-horizontal">
+  <h1 class="page-header text-center">radio出现bug</h1>
+  <div class="form-group">
+    <label class="control-label col-xs-3"></label>
+    <div class="col-xs-2">
+      <input type="radio" ng-model="radios" value='red'>{{redios}}
+      <input type="radio" ng-model="radios" value='green'>绿色
+      <input type="radio" ng-model="radios" value='blue'>蓝色
+    </div>
+  </div>
+
+  <input type="submit" class="btn btn-default">
+</form>
+
+<script src="../../node_modules/angular/angular.js"></script>
+<script src="js/form2.js"></script>
+</body>
+</html>

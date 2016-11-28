@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-cn" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>表单控件使用</title>
+  <link rel="stylesheet" type="text/css" href="../../public/libs/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-controller="myFromController">
+<!-- 表单控件声明和使用 -->
+<form name='myForm' ng-submit='submit()' class="form-horizontal">
+  <h1 class="page-header text-center"> h4的表单控件 </h1>
+  <div class="form-group">
+    <label class="control-label col-xs-3"></label>
+    <div class="col-xs-2">
+      <input class="form-control" type="text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3">密码</label>
+    <div class="col-xs-2">
+      <input class="form-control" type="password">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3">复选</label>
+    <div class="col-xs-2">
+      <input class="form-control" type="radio">
+      <input class="form-control" type="radio">
+      <input class="form-control" type="radio">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3">单选</label>
+    <div class="col-xs-2">
+      <input class="form-control" type="checkbox">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3">提交<span class="badge">angular中不再使用了</span></label>
+    <div class="col-xs-2">
+      <input class="form-control" type="file">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3">隐藏域<span class="badge">angular中不再使用了</span></label>
+    <div class="col-xs-2">
+      <input class="form-control" type="hidden">
+    </div>
+  </div>
+  <select name="s" id="s"></select>
+  <textarea name="ta" id="ta" cols="30" rows="10"></textarea>
+  <h1 class="page-header text-center">H5新的表单控件</h1>
+  <div class="form-group">
+    <label class="control-label col-xs-3">邮箱验证</label>
+    <div class="col-xs-2">
+      <input class="form-control" ng-model="email" type="email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3">数字验证</label>
+    <div class="col-xs-2">
+      <input class="form-control" type="number">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3">url验证</label>
+    <div class="col-xs-2">
+      <input class="form-control" type="url">
+    </div>
+  </div>
+  <h1 class="page-header text-center">新的不带验证</h1>
+  <div class="form-group">
+    <label class="control-label col-xs-3">搜索</label>
+    <div class="col-xs-2">
+      <input class="form-control" type="search">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3">滑动条</label>
+    <div class="col-xs-2">
+      <input type="range" min="0" max="100" ng-model="range">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3">颜色</label>
+    <div class="col-xs-2">
+      <input type="color" ng-model="color">
+    </div>
+  </div>
+  <h1 class="page-header text-center">时间控件，结合js中的date对象</h1>
+  <div class="form-group">
+    <label class="control-label col-xs-3"></label>
+    <div class="col-xs-2">
+      <input class="form-control" type="month">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3"></label>
+    <div class="col-xs-2">
+      <input class="form-control" type="week">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3"></label>
+    <div class="col-xs-2">
+      <input class="form-control" type="date" ng-model="date">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3">兼容有问题，仅支持safari浏览器</label>
+    <div class="col-xs-2">
+      <input class="form-control" type="datetime">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3"></label>
+    <div class="col-xs-2">
+      <input class="form-control" type="datetime-local">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3"></label>
+    <div class="col-xs-2">
+      <input class="form-control" type="time">
+    </div>
+  </div>
+
+  <h1 class="page-header text-center">按钮</h1>
+  <div class="form-group">
+    <label class="control-label col-xs-3"></label>
+    <div class="col-xs-2">
+      <input class="form-control" type="submit">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3"></label>
+    <div class="col-xs-2">
+      <input class="form-control" type="reset">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3"></label>
+    <div class="col-xs-2">
+      <input class="form-control" type="button">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3"></label>
+    <div class="col-xs-2">
+      <input class="form-control" type="image">
+    </div>
+  </div>
+</form>
+
+<script src="../../node_modules/angular/angular.js"></script>
+<script src="js/form2.js"></script>
+</body>
+</html>
