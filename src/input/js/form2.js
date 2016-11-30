@@ -8,13 +8,16 @@ app.controller('myFromController',function($scope){
   //////
   //  //
   //////
-  $scope.redios ='blue';
+  $scope.radios ='blue';
 
   $scope.submit = function(){
     console.log($scope.color,$scope.range,$scope.redios)
   }
-
+  $scope.submit1 = function(){
+    console.log($scope.value1)
+  }
   $scope.date = new Date()
+
 
 
 

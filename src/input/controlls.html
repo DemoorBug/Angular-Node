@@ -8,11 +8,11 @@
 <body ng-controller="myFromController">
 <!-- 表单控件声明和使用 -->
 <form name='myForm' ng-submit='submit()' class="form-horizontal">
-  <h1 class="page-header text-center">radio出现bug</h1>
+  <h1 class="page-header text-center">radio出现bug --- 我的天啊 居然是单词拼错 好吧</h1>
   <div class="form-group">
     <label class="control-label col-xs-3"></label>
     <div class="col-xs-2">
-      <input type="radio" ng-model="radios" value='red'>{{redios}}
+      <input type="radio" ng-model="radios" value='red'>{{radios}}
       <input type="radio" ng-model="radios" value='green'>绿色
       <input type="radio" ng-model="radios" value='blue'>蓝色
     </div>
@@ -21,6 +21,17 @@
   <input type="submit" class="btn btn-default">
 </form>
 
+
+
+<form name="myFom" ng-submit="submit1()">
+  <div class="form-group">
+    <label class="control-label col-xs-3">
+      值1: <input type="checkbox" ng-model="value1" ng-true-value="'Y'" ng-false-value="'F'">
+      值2: <input type="checkbox" ng-model="value2">
+    </label>
+  </div>
+  <input type="submit" class="btn btn-default">
+</form>
 <script src="../../node_modules/angular/angular.js"></script>
 <script src="js/form2.js"></script>
 </body>
