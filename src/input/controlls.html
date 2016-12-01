@@ -7,7 +7,7 @@
 </head>
 <body ng-controller="myFromController">
 <!-- 表单控件声明和使用 -->
-<form name='myForm' ng-submit='submit()' class="form-horizontal">
+<form name='myForm' ng-submit='submit()' class="form-horizontal container">
   <h1 class="page-header text-center">radio出现bug --- 我的天啊 居然是单词拼错 好吧</h1>
   <div class="form-group">
     <label class="control-label col-xs-3"></label>
@@ -23,7 +23,8 @@
 
 
 
-<form name="myFom" ng-submit="submit1()">
+<form name="myFom" ng-submit="submit1()" class="container">
+  <h1 class="page-header text-center">checkbox的ng-true-value，ng-false-value</h1>
   <div class="form-group">
     <label class="control-label col-xs-3">
       值1: <input type="checkbox" ng-model="value1" ng-true-value="'Y'" ng-false-value="'F'">
@@ -31,6 +32,21 @@
     </label>
   </div>
   <input type="submit" class="btn btn-default">
+</form>
+
+
+<form name="myFom" ng-submit="submit1()" class="container">
+  <h1 class="page-header text-center">select,最好结合ngOptions</h1>
+  <select ng-model="myColor" class="form-control form-group" ng-options="color.name for color in colors"></select>
+  <div class="form-control form-group" style="border: 1px solid #ccc" ng-style="{'border-color':myColor.name}">{{myColor}}</div>
+  <h3>非必填写法</h3>
+  <select ng-model="myColor2" class="form-control form-group" ng-options="color.name for color in colors">
+    <option value="">--不是必填--</option>
+  </select>
+  <h3>分组写法</h3>
+  <select ng-model="myColor3" class="form-control form-group" ng-options="color.name group by color.shade for color in colors">
+    <option value="">--分组写法--</option>
+  </select>
 </form>
 <script src="../../node_modules/angular/angular.js"></script>
 <script src="js/form2.js"></script>

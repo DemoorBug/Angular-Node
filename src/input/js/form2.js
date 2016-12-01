@@ -19,6 +19,12 @@ app.controller('myFromController',function($scope){
   $scope.date = new Date()
 
 
-
+  $scope.colors = [
+    {name: 'black',shade: 'dark'},
+    {name: 'white',shade: 'light'},
+    {name: 'red',shade: 'dark'},
+    {name: 'blue',shade: 'yellow'}
+  ]
+  $scope.myColor = $scope.colors[0]
 
 })
