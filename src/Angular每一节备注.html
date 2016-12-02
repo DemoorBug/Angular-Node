@@ -16,7 +16,37 @@
 ng-change  input发生改变，则触发
 ng-click  点击触发
 ng-repeat(重要): 用来将数据集合按照指定的形式重复渲染出来 详见table.html:38
-<strong>$('em').style.height='auto'</strong>
+
+
+<strong>表单验证三</strong>
+<em>
+  <b>表单验证：</b>
+  1) angular结合HTML5表单验证、内置验证指令和自定义验证指令来实现。
+  2) 验证选项
+    a) 必填项 required H5
+    B) 最小值 min H5
+    C) 最大值 max H5
+    d) 最小长度 min-length  ng-minLength="5"
+    e) 最大长度 ng-maxlength="10"
+    f) 模糊匹配 ng-pattern="[a-zA-Z]"
+    g) 电邮 声明 type="email" 即可 H5
+    h) 数字 声明 type="number" 即可 H5
+    I) URL 声明 type="url"即可 H5
+  3) 验证属性
+    a) $pristine 未修改的表单
+    b) $dirty 修改过的表单
+    c) $valid 合法表单
+    d) $invalid 非法的表单
+    e) $error 错误对象
+  4) 验证触发  表单验证四节
+    a) 禁用H5原生验证：在form对象添加novalidate
+    b) 失去焦点触发验证：
+      i) 创建$scope.focused = false;
+      ii) 使用ng-focus,ng-blur事件，修改focused状态为true或者false
+      iii) scope.$apply() 这个方法是模型改变试图跟着更改
+
+
+</em>
 
 <strong>表单与验证</strong>
 <i>input/form2.html</i>

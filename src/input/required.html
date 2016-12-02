@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-cn" ng-app="MyApp">
+<head>
+  <meta charset="UTF-8">
+  <title>表单控件使用</title>
+  <link rel="stylesheet" type="text/css" href="../../node_modules/angular/angular-csp.css">
+  <link rel="stylesheet" type="text/css" href="../../public/libs/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-controller="requiredController">
+<!-- 表单控件声明和使用 -->
+
+<form name="myForm" ng-submit="submit()" novalidate>
+  <input type="text" ng-model="username" name="username" required my-focus/>
+  <span ng-show="myForm.username.$invalid && myForm.username.$focused==false" ng-bind="'不能为空'"></span>
+  <input type="number" ng-model="number" min="1" max="5" required>
+  <input type="submit" value="提交">
+</form>
+
+
+</form>
+<script src="../../node_modules/angular/angular.js"></script>
+<script src="js/required.js"></script>
+</body>
+</html>
