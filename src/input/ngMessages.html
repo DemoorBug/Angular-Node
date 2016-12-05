@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>表单控件使用</title>
+  <link rel="stylesheet" type="text/css" href="../../node_modules/angular/angular-csp.css">
+  <link rel="stylesheet" type="text/css" href="../../public/libs/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-controller="aMessages">
+<h1 class="page-header">此处注释是直接改进版的验证</h1>
+<!-- <form name="myForm" ng-submit="submit()" novalidate>
+  <input type="text" ng-model="username" name="username" ensure-unique required ng-minlength="5" ng-maxlength="10">
+  <div ng-show="myForm.username.$dirty || submitted">
+    <span ng-show="myForm.username.$error.minlength"  ng-bind="'不得少于5个字'"></span>
+    <span ng-show="myForm.username.$error.maxlength"  ng-bind="'不得多于10个字'"></span>
+    <span ng-show="myForm.username.$error.required"  ng-bind="'不得为空'"></span>
+    <span ng-show="myForm.username.$error.unique" ng-bind="'用户名重复'"></span>
+  </div>
+  <input type="submit" class="btn btn-default" ng-class="{'btn-info':!myForm.$valid}" ng-disabled="!myForm.$valid">
+</form> -->
+<h1 class="page-header">此讲重点</h1>
+<form name="myForm" ng-submit="submit()" novalidate>
+  <input type="text" ng-model="username" name="username" ensure-unique required ng-minlength="5" ng-maxlength="10">
+  <div ng-messages="myForm.username.$error">
+    <span ng-message="minlength"  ng-bind="'不得少于5个字'"></span>
+    <span ng-message="maxlength"  ng-bind="'不得多于10个字'"></span>
+    <span ng-message="required"  ng-bind="'不得为空'"></span>
+    <span ng-message="unique" ng-bind="'用户名重复'"></span>
+  </div>
+  <input type="submit" class="btn btn-default" ng-class="{'btn-info':!myForm.$valid}" ng-disabled="!myForm.$valid">
+</form>
+
+<script src="../../node_modules/angular/angular.js"></script>
+<script src="js/angular-messages.js"></script>
+<script src="js/ngMessages.js"></script>
+</body>
+</html>

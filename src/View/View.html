@@ -8,13 +8,13 @@
 <body ng-init="person={name:'57codes'}">
 <!-- ng-switch的使用:配合on属性 -->
 <div ng-switch on="person.name">
-  <p ng-switch-default>参与者:</p>
+  <p ng-switch-default>加载失败</p>
   <div ng-switch-when="57code">{{person.name}}</div>
 </div>
 
 <!-- ng-include的使用 -->
 <!-- 请注意：这里ng-include接收的参数是表达式 -->
-<div ng-include="'tpl/header.html'">aaa</div>
+<!-- <div ng-include="'tpl/header.html'">aaa</div> -->
 
 <script src="../../node_modules/angular/angular.js"></script>
 <script src="js/view.js"></script>

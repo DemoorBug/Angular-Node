@@ -9,9 +9,17 @@
 <body ng-controller="requiredController">
 <!-- 表单控件声明和使用 -->
 
-<form name="myForm" ng-submit="submit()" novalidate>
+<!-- <form name="myForm" ng-submit="submit()" novalidate>
   <input type="text" ng-model="username" name="username" required my-focus/>
   <span ng-show="myForm.username.$invalid && myForm.username.$focused==false" ng-bind="'不能为空'"></span>
+  <input type="number" ng-model="number" min="1" max="5" required>
+  <input type="submit" value="提交">
+</form> -->
+
+<!-- 提交表单时验证 -->
+<form name="myForm" ng-submit="submits()" novalidate>
+  <input type="text" ng-model="username" name="username" required my-focus/>
+  <span ng-show="myForm.username.$invalid && submitted" ng-bind="'不能为空'"></span>
   <input type="number" ng-model="number" min="1" max="5" required>
   <input type="submit" value="提交">
 </form>
