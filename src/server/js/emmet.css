@@ -1,0 +1,13 @@
+body {
+    border: 1px solid black;
+    background: url(image.jpg) #ccc no-repeat;
+}
+div {
+    padding: 10px;
+
+    -webkit-transform: rotate(40deg);
+    -moz-transform: rotate(50deg);
+    -ms-transform: rotate(50deg);
+    -o-transform: rotate(50deg);
+    transform: rotate(40deg);
+}

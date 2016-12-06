@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>服务类型</title>
+  <link rel="stylesheet" href="../../public/libs/bootstrap/dist/css/bootstrap.css">
+</head>
+<body class="container" >
+<h2 class="page-header">服务类型</h2>
+
+<div ng-controller="MyController">
+<h3 class="form-group" ng-bind="apiKey"></h3>
+<h3 class="form-group" ng-bind="apiKey2"></h3>
+<h3 class="form-group" ng-bind="ms"></h3>
+</div>
+<h2 class="page-herder">使用provider</h2>
+<div ng-controller="MyProvider">
+  <blockquote>用户名<strong ng-bind="username"></strong></blockquote>
+  <blockquote>年龄<strong ng-bind="age"></strong></blockquote>
+</div>
+
+<script src="../../node_modules/angular/angular.js"></script>
+<script src="js/service.js"></script>
+</body>
+</html>

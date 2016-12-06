@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>表单验证</title>
+  <link rel="stylesheet" href="../../public/libs/bootstrap/dist/css/bootstrap.css">
+</head>
+<body class="container">
+
+<h2>angular-validation测试程序</h2>
+<hr>
+<form name="Form" class="form-horizontal">
+  <div class="form-group">
+    <label class="control-label col-md-3">名字(*)</label>
+    <div class="col-md-9">
+      <input type="text" class="form-control" name="username" ng-model="username" validator="required" required-error-message="用户名必填" required-success-message="用户名校验通过" autocomplete="off">
+    </div>
+  </div>
+  <div class="col-md-9 col-md-offset-3">
+    <button validation-submit="Form" class="btn btn-default">登录</button>
+    <button validation-reset="Form" class="btn btn-danger">重置</button>
+  </div>
+</form>
+
+
+  <script src="../../node_modules/angular/angular.js"></script>
+  <!-- angular-validation类库 -->
+  <script src="js/angular-validation.js"></script>
+  <!-- 如果要添加自定义效验规则，则需要导入 -->
+  <script src="js/angular-validation-rule.js"></script>
+  <script src="js/angularValidation.js"></script>
+</body>
+</html>

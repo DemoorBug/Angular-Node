@@ -16,6 +16,56 @@
 ng-change  input发生改变，则触发
 ng-click  点击触发
 ng-repeat(重要): 用来将数据集合按照指定的形式重复渲染出来 详见table.html:38
+<i>这里记录下我理解的构造函数和工厂方法</i>
+构造函数： 就是里面可以this.方法
+工厂： 就是利用ruturn返回一个对象键值对
+厉害了 哈哈哈哈
+
+<strong>服务(4)</strong>
+<em>
+  包装器 decorator: $provide 通常用在配置函数config 提供了在服务实例创建时对其进行拦截的功能，可以对服务进行扩展，甚至完全替代它。
+    常见使用场景
+      对服务进行扩展。所有服务(内置，自定义，第三方)
+      对服务封装以便开发时调试和跟踪
+  使用方式：$provide.decorator(拦截服务名，fn)
+  <i>p.finally() 哪里来的东西</i>
+  <a>server/js/service.js</a>75-99
+</em>
+
+<strong>服务类型</strong>
+<a>server/service.html</a>:provider用到了$http请求json文件，所以必须启动一个服务器
+<em><b>服务类型：</b>
+1) 常量 constant(name,value)
+2) 变量 value(name,value)
+/**
+ * 声明常量和变量两种服务
+ * 虽然是常量，但是还可以去更改值，
+ * config优先级高于controller
+ * 常量可以在程序配置函数中使用
+ */
+两者的区别：常量可以注入到配置函数中，因此更适合作为配置的变量来使用。跟名称常量不相符的是它的值可以修改
+3) 工厂 factory(name,getFn); 工厂是创建和配置服务的最快捷方式
+4) 服务 service(name,constructor);  和factory等同效果
+  <a>server/js/service.js</a>
+5) 提供者 provider(name,{$get:function(){}})
+  当传入的函数就是$get时，factory就是provider的简化形式
+  <a>server/js/service.js</a>:45
+6) 包装器 decorator 避免混淆，这讲放到服务(四)里面
+</em>
+
+<strong>工厂服务</strong>
+<b>服务放到新的目录server</b>
+<em>
+服务提供能够在应用的整个生命周期保持数据的方法，它能在控制器之间通信，且能保持数据的一致性。
+特性：
+1) 单例
+2) 延迟加载(用的时候才会加载，而不是注入后，节约内存资源)
+<b>创建一个服务 app.factory()工厂服务</b>
+<a>server/server.html</a>
+</em>
+
+
+
 
 <strong>表单与验证五</strong>
 <a>input/zidingyi.html</a>
@@ -31,6 +81,7 @@ ng-repeat(重要): 用来将数据集合按照指定的形式重复渲染出来 
 <b>ngMessages用于简化验证提示信息代码的编写</b>
 要引入ngMessages模块，我这里单开一节进行处理，毕竟实战中要用的
 <a>input/ngMessages.html</a>:24
+<b>导入angular-validation 库 github下载</b>
 </em>
 
 <strong>表单验证三</strong>
