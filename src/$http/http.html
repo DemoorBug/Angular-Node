@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>$http</title>
+  <link rel="stylesheet" href="../../public/libs/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-controller="myController" class="container">
+<h2 class="page-header">$http的使用</h2>
+
+<blockquote>
+  <p>姓名：<ins ng-bind="users[0].name"></ins></p>
+</blockquote>
+<blockquote>
+  <p>年龄：<ins ng-bind="users[0].age"></ins></p>
+</blockquote>
+
+<table class="table table-hover">
+  <tr>
+    <th>姓名</th>
+    <th>年龄</th>
+  </tr>
+  <tr ng-repeat="user in users">
+    <td ng-bind="user.name"></td>
+    <td ng-bind="user.age"></td>
+  </tr>
+</table>
+
+<script src="../../node_modules/angular/angular.js"></script>
+<script src="js/http.js"></script>
+</body>
+</html>

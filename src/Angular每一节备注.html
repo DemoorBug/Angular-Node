@@ -21,6 +21,20 @@ ng-repeat(重要): 用来将数据集合按照指定的形式重复渲染出来 
 工厂： 就是利用ruturn返回一个对象键值对
 厉害了 哈哈哈哈
 
+
+<strong>与服务器通信(一)</strong>
+<a>$http/http.html</a>:这一将使用到了请求，当然要启动服务器喽
+<em>$http:是对原生XMLHttpRequest对象的封装。
+<b>基本使用：</b>
+1) $http({url:'',method: 'get'})
+  a) 返回一个promise对象，英文意思答复，允诺
+  <i>omg的我的天啊  promiseA+规范，我前几天也不知道什么鬼，看到这个莫名的收藏了，现在就用到了，啊，冥冥中自有定向啊，厉害了啊。哈哈哈哈，想要的应该都在里面了</i>
+  b) promise的then方法  then(sucessFn,errorFn)
+  c) 简写形式: get()获取数据 post()发送数据 delete()删除 put()更新 jsonp()跨域 head()
+    <i>c) :这种技术会在很流行的(restful)这样一种后台请求技术</i>
+</em>
+
+
 <strong>服务(4)</strong>
 <em>
   包装器 decorator: $provide 通常用在配置函数config 提供了在服务实例创建时对其进行拦截的功能，可以对服务进行扩展，甚至完全替代它。
