@@ -20,6 +20,26 @@ ng-repeat(重要): 用来将数据集合按照指定的形式重复渲染出来 
 构造函数： 就是里面可以this.方法
 工厂： 就是利用ruturn返回一个对象键值对
 厉害了 哈哈哈哈
+<strong>与服务器通信(七)</strong>
+<i>本节使用到了node创建服务，所以有些文件避免重复修改，全部存放到$http/config目录</i>
+<em>基于非GET方法的HTTP方法：
+  save(params,payload,successFn,errorFn) POST方法 保存的意思
+  delete(params,payload,successFn,errorFn) DELETE方法
+  remove(params,payload,successFn,errorFn) DELETE方法
+  delete和remove功能完全相同，remove是IE中的替代方法
+搭建测试环境Node.js 单线程高并发  4.2
+  安装node.js + git
+  安装Express
+  安装Express生成器：npm install -g express-generator
+  创建Express 项目并启动：
+    express restful-test
+    cd restful-test && npm install
+    npm start
+  测试项目：浏览器输入localhost:3000
+  编写RESTful API:
+
+
+</em>
 
 <strong>与服务器通信(六)</strong>
 <a>$http/js/resource.js</a>
