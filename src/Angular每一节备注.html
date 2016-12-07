@@ -21,6 +21,85 @@ ng-repeat(重要): 用来将数据集合按照指定的形式重复渲染出来 
 工厂： 就是利用ruturn返回一个对象键值对
 厉害了 哈哈哈哈
 
+<strong>与服务器通信(六)</strong>
+<a>$http/js/resource.js</a>
+<em>Restful类型的API调用:Representational State Transfer(表征状态转移)
+
+AngularJs提供$resource服务可以同支持RESTful服务器端数据源来进行交互
+
+使用$resource
+  引入相关angular-resource.js
+  添加依赖ngResource
+  获取资源实例： $resource('data/:name.json',{name:'@username'})
+  基于GET的HTTP方法：
+    get(params,successFn,errorFn)
+      get方法可以不需要设置回调函数
+    query(params,successFn,errorFn)
+    get和query的唯一不同是Angular期望query返回的是数组
+
+
+</em>
+
+
+<strong>与服务器通信(五)</strong>
+<a>$http/js/http.js</a>:6-39
+<em>设置$httpProvider
+  修改默认的Content-Type:application/json
+  设置默认缓存
+  拦截器：在任何请求发送给服务器之前或者从服务器返回时对其拦截，从而为请求添加一些全局的功能。
+    场景：身份验证、错误的处理等
+    拦截器的类型：request、response、requestError、responseError
+  创建拦截器：1、创建拦截器工厂服务；2、注册该服务
+</em>
+
+<strong>与服务器通信(四)</strong>
+<em>缓存HTTP请求
+1) 设置配置对象cache为true即可
+2) 自定义缓存实例，通过$cacheFactory服务获取缓存实例
+  a) LRU(Least Recent Used) 最近最少使用原则
+  b) 创建： var lru = $cacheFactory('lru',{capacity:20});
+  c) 缓存对象可以使用的方法：
+    i) info() 获取缓存对象信息
+    ii) put(key,value) 存放数据
+    iii) get(key) 获取数据
+    iv) remove(key) 删除对应key的项
+    is) removeAll() 删除所有项
+    v) destroy() 摧毁所有
+</em>
+
+<strong>与服务器通信(三)</strong>
+<em>post和put数据的接收
+php接收： $_POST['username'],$_REQUEST['username']
+  *由于Content-Type:application/json
+  解决方案：修改后台接收参数的方式如下：
+  json_decode(file_get_contents('php://input'),true)
+  <i>根本不懂。还是等后面讲angular修改头吧，这样感觉好麻烦呀</i>
+</em>
+
+<strong>与服务器通信(二)</strong>
+<em>$http设置对象：
+1) method: 请求的HTTP方法
+  a) get post put delete jsonp head
+2) url: 目标地址，绝对或相对路径
+3) params: 添加URL参数时设置该对象
+    <a>$http/js/http.js</a>:37
+4) data: 通常发送post请求，设置参数用
+5) xsrfHeaderName: cross site request forgery (跨站请求伪造的名称)
+6) xsrfCookieName: cross site request (跨站请求伪造cookieName)
+7) cache: 可以设置布尔型或缓存对象，如果被设置为true，则会用默认的$http缓存来对get请求进行缓存，如果cache被设置为一个缓存对象$cacheFactory对象的实例，该对象会被用来进行缓存
+8) timeout: 设置数值或promise对象，如果是数值，则延迟指定的毫秒数在发送请求，如果promise，那么如果promise对象被查询数据时resolve()，则当前请求会被终止
+9) withCredentials: 设置布尔值，CORS跨域资源共享，解决jsonp，默认情况下CORS请求不会发送cookie，所以如果设置true，则就会将目标域的cookie包含在请求中
+10) responseType: 指定字符串，
+  a) ""
+  b) arraybuffer 数组缓存
+  c) blob 二进制大数据
+  d) document http稳定
+  e) json json字符串
+  f) text 纯文档
+  g) moz-blob firefox接收进度事件
+  h) moz-chunked-text 文本流
+  i) moz-chunked-arraybuffer ArrayBuffer流
+</em>
 
 <strong>与服务器通信(一)</strong>
 <a>$http/http.html</a>:这一将使用到了请求，当然要启动服务器喽

@@ -26,6 +26,29 @@
   </tr>
 </table>
 
+<h2 class="page-header">创建一个表单，测试post方法传参</h2>
+<form class="form-horizontal" ng-submit="submit()">
+  <div class="form-group">
+    <label class="control-label col-xs-2">姓名：</label>
+    <div class="col-xs-5">
+      <input type="text" class="form-control" ng-model="username">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-2">年龄：</label>
+    <div class="col-xs-5">
+      <input type="text" class="form-control" ng-model="age">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-5 col-xs-offset-2">
+      <input type="submit" class="btn btn-default">
+    </div>
+  </div>
+</form>
+
+<h2 class="page-header">缓存</h2>
+<button ng-click="getUsers()" class="btn btn-default">获取缓存列表</button>
 <script src="../../node_modules/angular/angular.js"></script>
 <script src="js/http.js"></script>
 </body>

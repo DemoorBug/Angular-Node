@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>resourcejs</title>
+  <link rel="stylesheet" href="../../public/libs/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-controller="myController" class="container">
+<h2 class="page-header">显示用户</h2>
+<table class="table table-hover">
+  <tr>
+    <th>姓名</th>
+    <th>年龄</th>
+  </tr>
+  <tr ng-repeat="users in user.users">
+    <td ng-bind="users.name"></td>
+    <td ng-bind="users.age"></td>
+  </tr>
+</table>
+
+
+
+<script src="../../node_modules/angular/angular.js"></script>
+<script src="js/angular-resource.js"></script>
+<script src="js/resource.js"></script>
+</body>
+</html>
