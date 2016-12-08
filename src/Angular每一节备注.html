@@ -20,6 +20,55 @@ ng-repeat(重要): 用来将数据集合按照指定的形式重复渲染出来 
 构造函数： 就是里面可以this.方法
 工厂： 就是利用ruturn返回一个对象键值对
 厉害了 哈哈哈哈
+
+
+
+<strong>与服务器通信(十)：使用Restangular</strong>
+<em>Restangular通过完全不同的途径实现了XHR通信，弥补了$http和$resource内置服务的一些缺点，主要优点如下：
+  支持promise: 使用起来符合angularjs习惯并支持链试操作
+  promise展开：可以同时操作promise对象
+  简单明了的API
+  全HTTP方法的支持
+  忘记URL:不需要提前指定URL(出了基本URL之外)
+  资源嵌套：Restangular可以直接处理嵌套资源，无需创建新的实例
+  单例：使用过程中仅需创建一个Restangular资源对象实例
+安装：
+  下载Restangular：https://github.com/mgonto/restangular
+  下载依赖 Lo-Dash(或underscore)
+  引入以上两个js文件
+  添加依赖：restangular
+  注入服务： Restangular
+<b>使用</b>
+  创建Restangular主对象：
+    Restangular.all('accounts');//url:/accounts/
+    Restangular.one('accounts',1)//url:/accounts/1
+    Restangular.saveral('accounts',1,2,3)//得到一个集合
+<b>范例：使用主对象查询并维护用户数据</b>
+
+</em>
+<strong>与服务器通信(九)：配置$resource</strong>
+<em>自定义$resource方法：设置$resource第三个参数对象
+  1) $resource(url,{},{})
+     $resource(url,{},{
+        'update': {method: 'PUT'}
+     })
+  2) 附加属性：资源有两个属性可以同底层数据定义交互
+     $promise: 为$resource生成的原始promise对象，特别用来同$routeProvider.when()在resolve时进行连接
+     $resolved: 服务器首次响应时被设置为true
+  3) 配置对象：
+    $resource(url,{},{
+        'update': {method: 'PUT'},
+        'get': {
+          isArray: true //以数组的形式返回结果，否则就会报异常，等同于query
+          interceptor: {//设置拦截器，此处只能设置两个拦截器，响应和响应错误，response和responseError
+            response : function(){}
+            responseError : function(){}
+          }
+
+        }
+     })
+</em>
+
 <strong>与服务器通信(七)</strong>
 <i>本节使用到了node创建服务，所以有些文件避免重复修改，全部存放到$http/config目录</i>
 <em>基于非GET方法的HTTP方法：
