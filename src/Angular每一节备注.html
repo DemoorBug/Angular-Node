@@ -43,8 +43,17 @@ ng-repeat(重要): 用来将数据集合按照指定的形式重复渲染出来 
     Restangular.all('accounts');//url:/accounts/
     Restangular.one('accounts',1)//url:/accounts/1
     Restangular.saveral('accounts',1,2,3)//得到一个集合
+  GET LIST
+  var baseAccounts = Restangular.all('accounts');
+  baseAccounts.getList().then(function(accounts){数据处理});
+  GET LIST2简写形式
+  $scope.accouts = Restangular.all('accounts').getList().$object;
+  POST-CREAT
+  baseAccounts.post(newAccount);
+  GET-ONE /account/1
+  Restangular.one('accounts',1).get().then(function(){});
 <b>范例：使用主对象查询并维护用户数据</b>
-
+20分
 </em>
 <strong>与服务器通信(九)：配置$resource</strong>
 <em>自定义$resource方法：设置$resource第三个参数对象
@@ -330,6 +339,8 @@ php接收： $_POST['username'],$_REQUEST['username']
 <i>牵扯到路由所以此路径打开无效，必须用服务器软件开启类似端口的东西</i>
 <a>view/route.html</a>
 <em>
+$routeProvider
+
   <b>这个标题相关标签列出来</b>
 单页应用(SPA)中往往有多重视图，在他们之间导航称之为路由。ng-view作为视图容器
 ng-view 作为视图容器
