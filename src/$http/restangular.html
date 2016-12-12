@@ -4,10 +4,19 @@
   <meta charset="UTF-8">
   <title>浏览器</title>
   <link rel="stylesheet" href="../../public/libs/bootstrap/dist/css/bootstrap.css">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body class="container" ng-controller="myController">
 <h2 class="page-header">Restangular使用</h2>
-
+<table class="table table-hover table-striped table-bordered">
+  <tr ng-repeat="user in users">
+    <td ng-bind="user.id"></td>
+    <td><a href="" ng-click="getUser(user.id)" ng-bind="user.name"></a></td>
+    <td ng-bind="user.password"></td>
+    <td class="info col-xs-1 text-center"><button class="btn btn-default" ng-click="deleteUser(user.id)">删除</button></td>
+  </tr>
+</table>
+<h3 ng-bind="operation" class="hidden-lg">用户信息</h3>
 <script src="../../node_modules/angular/angular.js"></script>
 <script src="restangular/lodash.js"></script>
 <script src="restangular/restangular.js"></script>
