@@ -20,10 +20,62 @@ ng-repeat(重要): 用来将数据集合按照指定的形式重复渲染出来 
 构造函数： 就是里面可以this.方法
 工厂： 就是利用ruturn返回一个对象键值对
 厉害了 哈哈哈哈
+<i>你总是这样轻言放弃的话，无论多久都只会原地踏步   不管知识有多新 只要来了什么姿势都得上</i>
+<em>
+var em = document.getElementsByTagName('em')
+for (var i=0;i&lt;em.length;i++){
+ em[i].style.height='auto'
+}
+</em>
+
+<strong>跨域和同源策略</strong>
+<em>浏览器在全局层面禁止了页面加载或执行了与自身来源不同的任何脚本
+浏览器通过对页面和资源的协议、主机名和端口号
+<b>同源策略允许页面从同一个站点加载和执行特定脚本</b>
+解决策略：
+  JSONP:是一种绕过浏览器安全限制的数据请求方法
+  CORS(cross Origin Resource Sharing)
+  服务器代理
+<b>JSONP</b>
+  添加script标签到DOM并由浏览器接管并向src指定的地址发送一个GET请求取代XHR.它会返回js函数并由请求回调函数调用之
+  angular中JSONP：
+    $http.jsonp(url?callback=JSON_CALLBACK).success(...)
+  生成的script:
+    script src= "url?callback=angular.callbacks._0" type="text/javascript"
+  响应内容：
+    angular.callbacks._0({'data':[{'name':'tom'}]})
+代码示例！：
+angular
+$http.jsonp('http://localhost:3000/jsonp?callback=JSON_CALLBACK')
+  .success(function(data){
+    console.log(data)
+  });
+Node
+router.get('/jsonp',function(req,res){
+  //返回jsonp响应
+  res.jsonp({status:'jsonp'});
+})
+  问题：
+  1.需要服务器的支持
+  2.安全风险
+  3.脚本异常难以处理  没有error回调？
+  4.只能处理get请求
+<b>CORS 跨域资源共享</b>
+  是W3C指定的取代JSONP的标准方式
+  CORS 规范扩展了标准XHR对象，允许JS发送跨域的XHR,通过与检查(preflight)机制确认是否有权限向目标服务器发送请求。
+  预检查可让服务器接收或拒绝来自全部服务器、特定服务器或一组服务器的请求，这需要客户端和服务端协同工作
+  angular中使用CORS:
+    客户端：使用config()进行全局配置
 
 
+
+
+
+</em>
 
 <strong>与服务器通信(十)：使用Restangular</strong>
+<a>$http/restangular.html</a>
+<a>$http/restangular/index.js</a>
 <em>Restangular通过完全不同的途径实现了XHR通信，弥补了$http和$resource内置服务的一些缺点，主要优点如下：
   支持promise: 使用起来符合angularjs习惯并支持链试操作
   promise展开：可以同时操作promise对象

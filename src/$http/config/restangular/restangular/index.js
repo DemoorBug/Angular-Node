@@ -1,6 +1,14 @@
-var app = angular.module('myApp',['restangular'];
+var app = angular.module('myApp',['restangular']);
 
-app.controller('myController',function($scope,Restangular){
+app.controller('myController',function($scope,Restangular,$http){
+  //使用jsonp访问跨域资源
+  $http.jsonp('http://localhost:3000/jsonp?callback=JSON_CALLBACK')
+    .success(function(data){
+      console.log(data)
+    });
+
+
+
   //获取主Restangular对象
   var User = Restangular.all('users');
   User.getList().then(function(users){
@@ -11,7 +19,9 @@ app.controller('myController',function($scope,Restangular){
   $scope.getUser = function(id){
     angular.forEach($scope.users, function(user,index){
       if(user.id == id){
-        $scope.currentUser = user;
+        var editUser = user.clone();  //防止是一个对象，双向数据绑定就会错乱
+        $scope.currentUser = editUser;  
+        console.log($scope.currentUser.name)
         return
       }
     })
@@ -33,27 +43,30 @@ app.controller('myController',function($scope,Restangular){
  $scope.saveUser = function(){
   if($scope.operation == '添加') {
     User.post($scope.currentUser).then(function(result){
-      alert(result.massage)
+      alert(result.message)
     });
   }else{
     $scope.currentUser.put().then(function(result){
+      User.getList().then(function(users){
+        $scope.users = users;
+      })
       alert(result.message);
     })
   }
-
+ }
   $scope.deleteUser = function(id){
     angular.forEach($scope.users, function(user,index){
       if(user.id == id){
+        console.log(index)
         user.remove().then(function(result){
-          alert(result.massage)
+          alert(result.message)
           //从本地数组中删除
           if(result.status == 'success'){
-            $scope.user.splice(index,1)
+            $scope.users.splice(index,1)
           }
         })
         return
       }
     })
   }
- }
 })

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-var user = require('./user');
+var user = require('./usera');
 //定义get方法获取用户列表
 router.get('/', user.list);
 //定义get方法获取指定ID的用户
