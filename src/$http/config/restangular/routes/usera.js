@@ -15,6 +15,7 @@ exports.get = function(req,res){
 	res.setHeader('Content-Type','application/json;charset=utr-8');
 	//获取指定id
 	console.log('req.params.id'+req.params.id)
+	if(req.params.id == 'jsonp') return res.jsonp({status:users});
 	res.send(users[req.params.id])
 }
 //删除指定用户的数据

@@ -14,4 +14,6 @@ router.post('/',user.add);
 //定义put方法更新用户
 router.put('/:id',user.update);
 
+
+
 module.exports = router;

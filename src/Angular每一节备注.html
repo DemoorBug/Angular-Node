@@ -65,9 +65,20 @@ router.get('/jsonp',function(req,res){
   CORS 规范扩展了标准XHR对象，允许JS发送跨域的XHR,通过与检查(preflight)机制确认是否有权限向目标服务器发送请求。
   预检查可让服务器接收或拒绝来自全部服务器、特定服务器或一组服务器的请求，这需要客户端和服务端协同工作
   angular中使用CORS:
-    客户端：使用config()进行全局配置
+    客户端：使用config()进行全局配置   新版的angular就不用配置了
+      app.config(function($httpProvider){
+        //启用xDomain
+        $httpProvider.defaults.useXDomain = true;
+        //确认移除'x-Requested-With'请求头
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+      })
+  <i>CORS 只需要后台配置，前天没有任何区别</i>
+  服务端：
+    必须在响应中假如访问控制的相关头：
+    1.Access-Control-Allow-Origin
+Node配置：
 
-
+<i>看了下闭包和call apply用法，闭包就是可以访问函数内部的一个变量。call和apply区别就是一个可以第二个接收方式不同罢了call(obj,,,,) apply(obj,arguments),第二个值是一个对象罢了，当然arguments放到函数里面才可以使用，接收所有参数.还有看到了第二讲跨域同源策略4分钟</i>
 
 
 
