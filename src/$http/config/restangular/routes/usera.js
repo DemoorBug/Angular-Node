@@ -6,6 +6,7 @@ var users = require('../model/usera').users;
 //列表所有用户数据
 exports.list = function(req,res){
 	res.setHeader('Content-Type','application/json;charset=utr-8')
+	res.setHeader('Access-Control-Allow-Origin',req.headers.origin);
 	// 给用户返回数据
 	res.send(users);
 }

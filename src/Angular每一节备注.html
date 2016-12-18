@@ -10,7 +10,6 @@
 </head>
 <body>
 <ul></ul>
-
 <strong>置顶</strong>
 数据绑定：当js中的变量改变时，他会自动更新自己所影响的试图模型，原来是这样，so
 ng-change  input发生改变，则触发
@@ -76,6 +75,7 @@ router.get('/jsonp',function(req,res){
   服务端：
     必须在响应中假如访问控制的相关头：
     1.Access-Control-Allow-Origin
+    必须处理于检查的请求
 Node配置：
 
 <i>看了下闭包和call apply用法，闭包就是可以访问函数内部的一个变量。call和apply区别就是一个可以第二个接收方式不同罢了call(obj,,,,) apply(obj,arguments),第二个值是一个对象罢了，当然arguments放到函数里面才可以使用，接收所有参数.还有看到了第二讲跨域同源策略4分钟</i>

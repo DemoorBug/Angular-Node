@@ -2,18 +2,24 @@ var app = angular.module('myApp',['restangular']);
 
 app.controller('myController',function($scope,Restangular,$http){
   //使用jsonp访问跨域资源
-  $http.jsonp('http://localhost:3000/users/jsonp?callback=JSON_CALLBACK')
+
+/*  $http.jsonp('http://localhost:3000/users/jsonp?callback=JSON_CALLBACK')
     .success(function(data){
       console.log(data)
       $scope.users = data.status;
-    });
+    });*/
+    
 
-
+  // $http的CPRS
+  $http.get('http://localhost:3000/users').success(function(users){
+    $scope.users = users
+  })
 
   //获取主Restangular对象
   var User = Restangular.all('users');
   User.getList().then(function(users){
     $scope.users = users;
+    console.log(users)
   })
 
   //获取某个具体用户信息

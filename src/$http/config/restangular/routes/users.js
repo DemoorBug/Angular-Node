@@ -14,6 +14,13 @@ router.post('/',user.add);
 //定义put方法更新用户
 router.put('/:id',user.update);
 
-
+//加入一个options请求处理方法
+router.options('/',function(req,res){
+	//设置为请求域或*
+	res.setHeader('Access-Control-Allow-Origin',req.headers.origin);
+	//设置允许请求
+	console.log(req.headers.origin)
+	res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,DELETE,OPTIONS');
+});
 
 module.exports = router;
