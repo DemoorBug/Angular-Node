@@ -20,11 +20,22 @@ ng-repeat(重要): 用来将数据集合按照指定的形式重复渲染出来 
 工厂： 就是利用ruturn返回一个对象键值对
 厉害了 哈哈哈哈
 <i>你总是这样轻言放弃的话，无论多久都只会原地踏步   不管知识有多新 只要来了什么姿势都得上</i>
+<i>人的一切痛苦, 本质上都是对自己无能的愤怒</i>
 <em>
 var em = document.getElementsByTagName('em')
 for (var i=0;i&lt;em.length;i++){
  em[i].style.height='auto'
 }
+</em>
+<strong>用户认证与授权</strong>
+<i>多数网络应用都是有需要保护的资源，这些资源只能由可以被识别且信任的授权用户访问</i>
+<b>保护客户端应用的两种方法：服务端视图渲染和客户端身份验证</b>
+<em>客户端身份验证：
+重定向未经身份验证的请求;
+捕获所有响应码为200的请求，并进行相对应的处理；
+在整个页面绘画中持续监听用户身份证验证的情况。
+<b>实现重定向行为：</b>
+方法1：定义请求拦截器
 </em>
 
 <strong>跨域和同源策略</strong>
@@ -72,11 +83,36 @@ router.get('/jsonp',function(req,res){
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
       })
   <i>CORS 只需要后台配置，前天没有任何区别</i>
-  服务端：
+  <b>服务端配置：</b>
     必须在响应中假如访问控制的相关头：
     1.Access-Control-Allow-Origin
+    res.setHeader('Access-Control-Allow-Origin',req.headers.origin);
+    2.Access-Control-Allow-Credentials(可选)：默认情况下CORS请求不会包含cookie，如果服务器返回了这个头，客户端就必须将withCredentials设置为true,否则请求失败，反之亦然。
     必须处理于检查的请求
-Node配置：
+    res.setHeader('Content-Type','application/json;charset=utr-8')
+<b>Node配置：</b>
+//加入一个options请求处理方法
+router.options('/',function(req,res){
+  //设置为请求域或*
+  res.setHeader('Access-Control-Allow-Origin',req.headers.origin);
+  //设置允许请求
+  console.log(req.headers.origin)
+  res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,DELETE,OPTIONS');
+});
+
+<b>restangular请求地址</b>
+//设置基础URL避免出现404问题
+Restangular.setBaseUrl('http://localhost:3000/');
+//方案2 利用allUrl(route,url) 获取主Restangular对象
+var User = Restangular.allUrl('users','http://localhost:3000/users')
+<b>CORS请求分为简单和非简单两种类型，简单类型并不需要与检测，而后者则可能需要</b>
+简单请求包括：
+  HEAD/GET/POST
+  除了Accept、Accept-Language、COntent-Language、Last-Event-ID Content-Type(表单中三种基本类型)以外没有其他请求头
+不符合简单请求标准的都是非简单请求
+  预检查： OPTIONS类型请求，包含以下头信息：
+    Access-Control-Request-Method:请求所使用的方法
+    Access-Control-Request-Headers: 逗号隔开的非简单头列表，如果这里设置了，则相应中也必须设置该头
 
 <i>看了下闭包和call apply用法，闭包就是可以访问函数内部的一个变量。call和apply区别就是一个可以第二个接收方式不同罢了call(obj,,,,) apply(obj,arguments),第二个值是一个对象罢了，当然arguments放到函数里面才可以使用，接收所有参数.还有看到了第二讲跨域同源策略4分钟</i>
 

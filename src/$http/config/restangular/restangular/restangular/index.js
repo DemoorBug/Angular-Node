@@ -15,6 +15,8 @@ app.controller('myController',function($scope,Restangular,$http){
     $scope.users = users
   })
 
+  Restangular.setBaseUrl('http://localhost:3000/');
+
   //获取主Restangular对象
   var User = Restangular.all('users');
   User.getList().then(function(users){
