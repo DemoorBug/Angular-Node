@@ -33,7 +33,19 @@ for (var i=0;i&lt;em.length;i++){
 根据用户权限控制试图访问
 通过访问级别定义路由
 通过$routeChangeStart事件控制路由
-
+<a>routeUser/index.html</a>
+使用到了cookie  我基本没用过。
+<b>本讲设计知识：</b>
+$routeProvider  路由设置
+$httpProvider.interceptors.push('AuthInterceptor');  注册拦截器
+$location.path() 跳转
+app.constant()　 常量设置 优点可以注入
+app.run() //run方法触发全局事件的处理和监听行为  赶紧和$(function(){}) 类似
+$routeChangeStart  事件 //evt 好像是自己本身。没有用到, next为将要跳转视图对象,curr是当前视图对象
+$rootScope  注入  根
+$injector  注入  这个好像可以把其他server 注入进来
+app.factory()  工厂server
+$cookieStore  cookie注入
 </em>
 
 <strong>用户认证与授权</strong>

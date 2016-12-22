@@ -8,7 +8,7 @@ app.factory('AuthInterceptor',function($q,$rootScope,$injector){
       //发送给服务器的请求添加令牌token;
       var Auth = $injector.get('Auth');
       //把token放入请求头
-      req.headers['yourHeaderFeild'] = Auth.getToken();
+      req.headers['token'] = Auth.getToken();
       console.log(req.headers)
       return req;
     },
