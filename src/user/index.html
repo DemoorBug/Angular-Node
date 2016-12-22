@@ -1,38 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn" ng-app="myApp">
 <head>
   <meta charset="UTF-8">
   <title>登录端用户验证</title>
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="../../public/libs/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="bootstrap.css">
 </head>
-<body>
+<body ng-controller="IndexController">
 <div class="container">
   <div class="row">
-    <h2 class="page-header">客户端身份验证</h2>
+    <h2 class="page-header text-center">客户端身份验证</h2>
     <div class="form-horizontal">
       <div class="form-group">
         <label class="control-label col-lg-3">用户名</label>
         <div class="col-lg-5">
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" ng-model="user.name">
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-lg-3">密码</label>
         <div class="col-lg-5">
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" ng-model="user.password">
         </div>
       </div>
       <div class="form-group">
         <div class="col-lg-5 col-lg-offset-3">
-          <button class="btn btn-btn-default" ng-click="login()">登录</button>
+          <button class="btn btn btn-default" ng-click="login()">登录</button>
+          <button class="btn btn btn-info" ng-click="getUserInfos()">获取用户信息</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<script src="../../node_modules/angular/angular.js"></script>
-<script src="js/main.html"></script>
+<script src="angular.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

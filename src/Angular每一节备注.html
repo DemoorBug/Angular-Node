@@ -27,6 +27,15 @@ for (var i=0;i&lt;em.length;i++){
  em[i].style.height='auto'
 }
 </em>
+
+<<strong>用户认证与授权</strong>
+<em><b>使用路由定义受保护的资源</b>
+根据用户权限控制试图访问
+通过访问级别定义路由
+通过$routeChangeStart事件控制路由
+
+</em>
+
 <strong>用户认证与授权</strong>
 <i>多数网络应用都是有需要保护的资源，这些资源只能由可以被识别且信任的授权用户访问</i>
 <b>保护客户端应用的两种方法：服务端视图渲染和客户端身份验证</b>
@@ -37,6 +46,8 @@ for (var i=0;i&lt;em.length;i++){
 <b>实现重定向行为：</b>
 方法1：定义请求拦截器
 </em>
+<a>users/index.html</a>
+因为没有解决auth跨域通过预检测，所以目前只能放到同源的地方玩，，哎，好坑啊
 
 <strong>跨域和同源策略</strong>
 <em>浏览器在全局层面禁止了页面加载或执行了与自身来源不同的任何脚本
@@ -115,8 +126,8 @@ var User = Restangular.allUrl('users','http://localhost:3000/users')
     Access-Control-Request-Headers: 逗号隔开的非简单头列表，如果这里设置了，则相应中也必须设置该头
 
 <i>看了下闭包和call apply用法，闭包就是可以访问函数内部的一个变量。call和apply区别就是一个可以第二个接收方式不同罢了call(obj,,,,) apply(obj,arguments),第二个值是一个对象罢了，当然arguments放到函数里面才可以使用，接收所有参数.还有看到了第二讲跨域同源策略4分钟</i>
-
-
+<a>users/index.html</a>
+因为没有解决auth跨域通过预检测，所以目前只能放到同源的地方玩，，哎，好坑啊
 
 </em>
 
