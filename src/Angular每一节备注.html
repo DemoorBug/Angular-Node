@@ -27,6 +27,64 @@ for (var i=0;i&lt;em.length;i++){
  em[i].style.height='auto'
 }
 </em>
+<strong>测试(一)：使用Karma+Jasmine进行测试</strong>
+<em>测试：衡量应用健康度的手段
+<b>为什么测试</b>
+  1).了解代码各部分是否按预期工作;
+  2).更容易定位bug从而解决之;
+  3).使其他开发人员更容易上手
+  4).风方便、容易的提供应用可用文档
+<b>如何测试？</b>
+  1).两种测试类型:单元测试(知道代码怎么写的)、端到端的测试(用户的角度)
+  2).单元测试：测试隔离的、单独组件的代码
+    适用于测试小型、独立代码单元、单个函数或者较小交互功能
+  3).端到端测试:对应用做黑盒测试
+    从最终用户的角度测试应用，并不关心底层实现。适合测试大型应用的功能
+<b>AngularJS中如何开始测试</b>
+  工具：Karma+Jasmine
+  确保安装了Node.js
+  安装测试运行器Karma: npm install -g karma
+  构建应用的项目结构：
+  app/
+    index.html
+    lib/ - js库
+    js/ - 业务逻辑
+    views/ - 试图模板
+    test/
+      karma.conf.js   - 单元测试配置文件
+      karma-e2e.conf.js - 端到端测试配置文件
+      lib/  - 模拟库
+        angular-mocks.js
+      unit/ - 单元测试代码
+      e2e/ - 端到端测试代码
+</em>
+
+<strong>给你一个承诺-Promise</strong>
+<em><b>Promise对象</b>
+  promise是一种异步方式处理值(或非值)的方法，promise是对象，代表了一个函数最终可能的返回值或抛出异常。在与远程对象交互时，可以吧Promise看做远程对象的一个代理
+  为什么要用promise
+    使用Promise可以让我们逃脱回调地狱，使代码可以进行链试操作，看起来像是同步的。
+    可以在程序中的任何位置捕捉错误，并且绕过依赖于程序异常的后续代码，获得功能组合和错误冒泡的能力，最重要的是保持了异步运行能力
+  如何在AngularJs中使用Promise
+  1).使用内置服务$q获得deferred对象
+  2).通过deferred对象的promise属性获取Promise对象
+  3).调用deferred对象的resolve(value)/reject(reason)失败/notify(value)进行了多少，请求条/与Promise对象交互
+  4).通过then处理过程或结果
+  <b>思考：为什么需要$q,$http不是直接返回Promise对象吗?</b>
+1.当做异步操作的时候；并且可能出现回调嵌套;
+2.$http内部使用$q方式实现的异步操作。
+<b>通过promise对象的then方法进行链试调用</b>
+  then(successFn,errorFn,progressFn)
+<b>Promise对象常用方法</b>
+then(successFn,errorFn,progressFn)
+catch(errorFn):帮助方法，可以取代then中的errorFn
+finally(callback):无论成功失败，都会执行，适合执行清理任务。
+<b>$q服务的其他方法</b>
+all(promises);  通常传递数组参数，该方法将多个promise对象合并为一个，如果任意一个promise被拒，则结果promise也会被拒
+when(val): 吧一个可能是指或者能接着then的promise包装成一个promise，这样可以处理一个可能是也可能不是promise的对象
+<i>这讲有bug 但是老师也没有解决。。我用throw抛出错误，就可以了</i>
+<b>我发现了一个算法和数据逻辑  好像可以解释我为什么没有那些理解逻辑</b>
+</em>
 
 <<strong>用户认证与授权</strong>
 <em><b>使用路由定义受保护的资源</b>

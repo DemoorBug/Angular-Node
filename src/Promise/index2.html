@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Promise给你一个承诺</title>
+  <link rel="stylesheet" href="../../public/libs/bootstrap/dist/css/bootstrap.css">
+</head>
+<body class="container">
+<h2>Promise链试调用</h2>
+<hr>
+
+<div ng-controller="myController">
+  <div class="checkbox">
+    <label for="flags">
+      <input type="checkbox" id="flags" ng-model="flag">成功
+    </label>
+  </div>
+  <div>{{status}}</div>
+  <button class="btn btn-default" ng-click="handle()">点击我</button>
+</div>
+
+<script src="../../node_modules/angular/angular.js"></script>
+<script src="js/main2.js"></script>
+</body>
+</html>
