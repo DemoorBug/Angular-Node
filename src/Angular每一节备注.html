@@ -27,6 +27,18 @@ for (var i=0;i&lt;em.length;i++){
  em[i].style.height='auto'
 }
 </em>
+
+<strong>测试angularJs应用</strong>
+<em>模拟：在收控环境下定义模拟对象模仿真实对象的行为
+AngularJS中实现模拟：angular-mocks.js(专用于单元测试)
+  1.添加lib目录，添加angular-mocks.js
+  2.修改配置文件karma.conf.js
+使用angular.mock.module(moduleName)创建模拟模块对象
+  可用module代替angular.mock.module
+使用angular.mock.inject(function($roorScope){...})
+  可用inject代替angular.mock.inject
+  创建变量保存注入的服务，这样可在整个it的字句中使用它们
+</em>
 <strong>测试(一)：使用Karma+Jasmine进行测试</strong>
 <em>测试：衡量应用健康度的手段
 <b>为什么测试</b>
@@ -57,6 +69,61 @@ for (var i=0;i&lt;em.length;i++){
         angular-mocks.js
       unit/ - 单元测试代码
       e2e/ - 端到端测试代码
+<b>配置文件解读</b>
+初始化配置文件：karma init karma.conf.js
+选择测试框架：jasmine
+是否添加 require.js: no
+捕获浏览器列表:Chrome,Firefox
+测试代码路径： ../js/**/*.js(源文件),unit/**/*.js
+排除代码：[]
+监视文件变更：true
+<b>运行测试：karma start karma.conf.js</b>
+<b>编写测试：</b>
+  describe(specName,fn): 创建细则套件
+  describe('UnitTest:MainController',function(){
+    describe('index method',function(){...}) //细则的嵌套
+  })
+<b>创建细则套件</b>
+<pre>
+//定义创建细则套件
+describe('UnitTest:MainController',function(){
+  //定义写着
+  it('index method',function(){
+    //测试代码
+    expect(true).toBe(true);
+  })
+})
+</pre>
+<b>最佳实践：</b>
+1.使用describe函数把相关细则分组
+2.测试命名成可读英文
+<b>函数</b>
+it(specDesc,fn):定义细则，包含若干测试预期
+  it('contains a passing spec',function(){...})
+expect(val1).toBe(val2):创建测试预期，val1真实值，toBe()匹配器函数，val2期望值，创建否定式：expect(val1).not.toBe(val2)
+匹配器函数：
+  toBe(val):相当于全等 ===
+  toEqual(val)相当于 ==
+  toMatch(RegexOrString):使用正则表达式匹配字符串
+  ToBeUndefined(): 将值与undefined比较，差不多就是来比较这个变量是否赋值了
+  toBeDefined():与前一个方法相反
+  toBeNull(): 将值与null比较
+  toBeTruthy(): 将值转换为布尔值与true比较
+  toBeFalsy(): 将值转换为布尔值与false比较
+  toContain(val): 检测一个条目是否在数组中
+  toBeLessThan(val): 比较数值是否小于预期值
+  toBeGreaterThan(val): 与上面方法相反
+  toBeCloseTo(val,fixed): 比较在一个指定精度级别内真实值是否等于期望值
+  toThrow():验证一个函数是否抛出异常
+<b>自定义匹配器</b>
+1.写在beforeEach(fn)中
+2.调用jasmine.addMatchers(obj)
+3.自定义匹配器函数返回对象必须实现compare(actual,expected)
+4.compare需要返回包含pass属性的对象，其值应当是比较是否成立的判断表达式
+<b>安装和拆卸: 在每个测试用例运行之前或者之后被调用</b>
+  beforeEach(fn)  初始化
+  afterEach(fn)   重置
+
 </em>
 
 <strong>给你一个承诺-Promise</strong>
