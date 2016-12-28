@@ -3,8 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>TWS</title>
+  <link rel="stylesheet" href="../../../public/libs/bootstrap/dist/css/bootstrap.css">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
-<body>
-ONE
+<body class="container">
+<h2 class="page-header" ng-controller="myController">
+  <span class="" ng-bind="time.today|date:'yyyy-MM-dd-ss'"></span>
+</h2>
+
+<div ng-controller="NotiController">
+<input type="text" ng-model="txt">
+<button ng-click="send()">发送消息</button>
+  <div notification message="message"></div>
+</div>
+
+<script src="js/angular.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
