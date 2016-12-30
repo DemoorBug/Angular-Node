@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  ul
+    - each user in users
+      li
+        span= user.username
+        span(style="margin-left:20px;") #{user.age}
+        form(action="/users/update/#{user._id}" style="display:inline")
+          input(type="submit" value="更新")
+        form(method="post" action="/users/remove" style="display:inline")
+          input(type="hidden" value="#{user._id}" name="_id")
+          input(type="submit" value="删除")
+

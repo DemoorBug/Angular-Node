@@ -28,8 +28,93 @@ for (var i=0;i&lt;em.length;i++){
 }
 </em>
 
+<strong>项目实战(一):数据库MongoDB</strong>
+<em>MongoDB - noSQL 不需要去写sql语句的
+下载: www.mongodb.org 网站
+如果运行的版本是Windows Server 2008 R2 或Windows 7 ,请安装修复程序解决内存映射文件在windows的问题。
+  下载地址: https://support.microsoft.com/zh-cn/hotfix/kbhotfix?kbnum=2731284&kbln=zh-cn
+创建数据存储目录： c:/data/db/
+测试连接:
+  设置环境变量
+  启动服务：cmd-mongod
+
+Mongoose : object document mapper  对象文档映射(ODM);
+
+安装: npm install --save mongoose
+
+使用mongoose
+
+范例: 使用Mongoose
+1.创建Express项目： mongoose-test
+  -express mongoose-test
+  -cd mongoose-test
+  -npm install --save mongoose
+2.添加mongoose依赖:
+  -npm install --save mongoose
+3.修改routers/users.js
+
+</em>
+
+
+<strong>项目架构</strong>
+<em>目录结构:
+angular-test/
+  images/ - 存放图片素材
+  style/ - 存放样式
+  libs/ - 存放库文件
+  scripts/ - 业务逻辑相关的文件
+    app.js - 主文件 入口文件
+    config/ - 配置文件
+    controllers/ - 控制器
+    directives/ - 指令
+    filters/ - 过滤器
+    services/ - 服务
+  views/ - 模板文件
+  test/ - 测试文件
+<b>模块化</b>
+</em>
+
+
 <strong>依赖注入</strong>
-<em>依赖注入是一种设计模式，它可以去除对依赖关系的硬编码，从而可以在运行时改变甚至移除依赖关系</em>
+<em>依赖注入是一种设计模式，它可以去除对依赖关系的硬编码，从而可以在运行时改变甚至移除依赖关系
+优点：使开发者专注于业务逻辑开发;代码更加清晰易维护;易于测试
+AngularJs 使用 $injector 来管理依赖关系的查询和实例化;
+Angular内部处理过程:
+//使用注入器加载应用
+var injector = angular.injector(['ng','myApp']);
+
+//通过注入器加载$controller服务
+
+var $controller = injector.get('$controller');
+var scope = injector.get('$rootScope').$new();
+//加载控制器并传入一个作用域
+
+var myController = $controller('myController',{$scope:scope})
+<b>推断式注入声明：AngularJS假定函数中的参数名称就是依赖注入的名称，注入过程如下：</b>
+injector.invoke(function($http,greenter){});
+只适用于未经压缩和混淆的代码;
+跟参数顺序无关
+<b>显示注入声明:Angular提供了显示的方法来明确定义一个函数在被调用时需要用到的依赖关系</b>
+代码被压缩依然能正常工作；
+通过设置函数对象的$inject属性显示注入依赖;
+<b>行内注入声明：我自己研究出来了 哈哈哈 </b>
+angular.module('myApp',[]).controlls('myController',['$scope','greeter',function($scope,greeter){}])
+<b>$injector API:</b>
+annotate(fn) : 返回由服务名称组成的数组
+<pre>
+var injector = angular.injector(['ng','myApp']);
+
+injector.annotate(function($q,greeter){});
+//["$q","greeter"]
+</pre>
+get(name):返回一个服务的实例。拦截器避免循环引用的错误必须这么写
+has(name):返回是否包含指定name服务的布尔值；
+instantiate(type,locals):可以创建某个JS类型的实例 == new
+instantiate(比如一个字符串,传参)
+
+invoke(fn):给函数添加依赖
+
+</em>
 
 <strong>这讲才是重点啊：目的</strong>
 <em><b>测试angular应用：路由、页面内容、控制器、服务和工厂、指令、过滤器、模板</b>
