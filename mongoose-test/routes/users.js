@@ -1,11 +1,10 @@
 var express = require('express');
 var router = express.Router();
-//引入mongoose
-var mongoose = require('mongoose');
-
-var User;
+//用户模型
+var User = require('../models/User.js')
 
 //链接数据库
+/*
 mongoose.connect('mongodb://localhost/teachSys',function(err) {
   if(err) console.log(err);
   //如果没有错误则连接成功
@@ -20,6 +19,52 @@ mongoose.connect('mongodb://localhost/teachSys',function(err) {
     User = mongoose.model('User',Users);
   }
 })
+*/
+
+//跨域的预检查处理
+router.options('/login',function(req,res){
+  res.setHeader('Access-Control-Allow-Origin',req.headers.origin);
+  res.setHeader('Access-Control-Allow-Methods','OPTIONS,POST');
+  res.setHeader('Access-Control-Allow-Headers','Content-Type');
+  res.send();
+})
+//查询列表
+router.options('/',function(req,res){
+  res.setHeader('Access-Control-Allow-Origin',req.headers.origin);
+  res.setHeader('Access-Control-Allow-Methods','OPTIONS,GET,POST');
+  res.setHeader('Access-Control-Allow-Headers','Content-Type');
+  res.send();
+})
+router.options('/:_id',function(req,res){
+  res.setHeader('Access-Control-Allow-Origin',req.headers.origin);
+  res.setHeader('Access-Control-Allow-Methods','OPTIONS,DELETE,PUT');
+  res.setHeader('Access-Control-Allow-Headers','Content-Type');
+  res.send();
+})
+
+//登陆接口
+router.post('/login',function(req,res){
+  //设置响应头
+  res.setHeader('Content-Type','application/json;charset=utf-8');
+  res.setHeader('Access-Control-Allow-Origin',req.headers.origin);
+
+  //查询是否存在登陆信息对应的用户
+  console.log(req.body)
+  User.findOne(req.body,function(err,user){
+    if(err){
+      console.log(err)
+      return
+    }
+    if(user){
+      //登陆成功
+      res.send({status:'success',user:user});
+    }else{
+      res.send({status:'failure'});
+    }
+  })
+})
+
+
 //返回用户列表
 router.get('',function(req,res,next){
   //获取用户
