@@ -66,8 +66,37 @@ router.post('/login',function(req,res){
 
 
 //返回用户列表
-router.get('',function(req,res,next){
-  //获取用户
+router.get('/',function(req,res,next){
+  res.setHeader('Content-Type','application/json;charset=utf-8');
+  res.setHeader('Access-Control-Allow-Origin',req.headers.origin);
+
+  //根据请求用户角色获取用户列表
+  //1.管理员查询所有教师；
+  //2.教师查询其所有教师；
+  if(req.query.role == 1) {
+    //1.管理员查询所有教师
+    User.find({role:2},function(err,users){
+      if(err){
+        console.log(err)
+        return;
+      }
+      res.send(users);
+    });
+  }else if(req.query.role == 1){
+    User.find({role:3},function(err,users){
+      if(err){
+        console.log(err)
+        return;
+      }
+      res.send(users);
+    });
+  }else {
+    //......
+    res.send([]);
+  }
+
+
+/*  操作mongodb时候的数据，可以作为参考
   User.find({},function(err,users){
     //错误处理
     handleError(err);
@@ -97,25 +126,49 @@ router.get('',function(req,res,next){
       res.render('users',{title:'用户列表',users:users});
     }
   })
+  */
 })
 
-//删除
-router.post('/remove',function(req,res){
-  User.findById(req.body._id,function(err,user){
-    handleError(err);
-    //是否查询到_id对应的用户
-    if(user){
-      user.remove(function(err){
-        handleError(err);
-        res.send('删除成功')
-      });
+//删除用户
+router.delete('/:_id',function(req,res){
+  res.setHeader('Content-Type','application/json;charset=utf-8');
+  res.setHeader('Access-Control-Allow-Origin',req.headers.origin);
+
+  //删除对应用户
+  console.log('删除用户ID:'+req.params._id);
+  //查找并删除用户
+  User.findByIdAndRemove(req.params._id,function(err,users){
+    if(err){
+      console.log(err);
+    }
+    if(users) {
+      res.send({status:'success'});
     }else {
-      res.send('没有该用户')
+      res.send({status:'failure'});
     }
   })
+
 })
 
-router.get('/update/:_id',function(req,res){
+//添加用户逻辑
+router.post('/',function(req,res){
+  res.setHeader('Content-Type','application/json;charset=utf-8');
+  res.setHeader('Access-Control-Allow-Origin',req.headers.origin);
+
+  //添加操作
+  console.log('添加用户'+req.body)
+  var user = new User(req.body)
+  user.save(function(err,user){
+    if(err){
+      console.log(err);
+    }
+    if(user) {
+      res.send({status:'success'});
+    }else {
+      res.send({status:'failure'});
+    }
+  });
+/*
   User.findById(req.params._id,function(err,user){
     handleError(err);
     //是否查询到_id对应的用户
@@ -126,6 +179,7 @@ router.get('/update/:_id',function(req,res){
       res.send('更新用户不存在')
     }
   })
+  */
 })
 
 router.post('/update',function(req,res){

@@ -31,16 +31,33 @@ for (var i=0;i&lt;em.length;i++){
 }
 </em>
 
+
+
+
+<strong>路由监控以及过滤器</strong>
+ng-repeat
+{{$index}},索引
+{{$first}},第一个
+{{$middle}},中间
+{{$last}},最后
+{{$even}},偶数
+{{$odd}},奇数
+<em>路由监控
+定义初始化方法app.run()
+监听路由变化开始事件$routeChangeStart
+如果要跳转的页面不是登录页则必须验证其登录角色
+6.角色名称过滤器
+定义一个过滤器n
+  roleName
+引入过滤器
+修改users.html
+</em>
 <strpng>项目实战(三)：完成用户模块管理</strpng>
 <em>创建用户管理模块：
-
+顶部导航栏views/nav.html
+用户管理页面 views/users.html
+UsersController
 </em>
-
-
-
-
-
-
 
 <strong>项目实战(二)</strong>
 <em>项目：教学系统

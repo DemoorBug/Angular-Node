@@ -19,7 +19,46 @@ angular.module('myApp.controllers',['myApp.services'])
       })
     }
   }])
-  .controller('UsersController',['$scope',function($scope){
+  .controller('UsersController',['$scope','UserService',function($scope,UserService){
+    //激活users导航按钮
+    $scope.isUsersActive= true;
+    $scope.isClassesActive= false;
+    $scope.isExamsActive= false;
+    //查询用户列表
+    //管理员默认查询所有教师账号，教师默认查询属于其所在班级的所有学生
+    UserService.getUserList().then(function(users){
+      $scope.users = users;
+    })
+
+    //删除用户
+    $scope.remove = function(user){
+      //DELETE http://localhost:3000/users/abcdefdfadlfkajdf
+      user.remove().then(function(result){
+        if(result.status == 'success'){
+          //删除成功,从数组中移除
+          angular.forEach($scope.users,function(u,i){
+            if(u._id == user._id){
+              $scope.users.splice(i,1);
+            }
+          })
+        }
+      })
+    }
+
+    //添加用户
+    $scope.addUser = function(){
+      $scope.addeUser = {};
+
+    }
+    $scope.submit= function() {
+      UserService.addUser($scope.addeUser).then(function(result){
+        if(result.status == 'success'){
+          UserService.getUserList().then(function(users){
+            $scope.users = users;
+          })
+        }
+      })
+    }
   }])
   .controller('ClassesController',['$scope',function($scope){
   }])
