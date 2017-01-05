@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app='myApp'>
+<head>
+  <meta charset="UTF-8">
+  <title>Animation</title>
+  <link rel="stylesheet" type="text/css" href="bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="view.css">
+  <link rel="stylesheet" type="text/css" href="repeat.css">
+  <style type="text/css">
+    .containers {
+      border: 1px solid #000;
+      background: deepskyblue;
+      width: 200px;
+      height: 80px;
+    }
+    /*c3过渡动画*/
+/*
+    .fade-in {
+      transition: all 1s;
+      opacity: 0;
+    }
+    .containers:hover {
+      opacity: 1;
+    }
+     */
+    /*C3动画*/
+    /*定义动画*/
+/*
+    @keyframes fade-in {
+      0% { opacity: 0 }
+      100% { opacity: 1 }
+    }
+    应用动画
+    .fade-in {
+      opacity: 0;
+    }
+    .fade-in:hover {
+      animation: fade-in 1s;
+    }
+     */
+    /*ng-enter*/
+    @keyframes fade-in {
+      0% { opacity: 0 }
+      100% { opacity: 1 }
+    }
+    @keyframes fade-out {
+      0% { opacity: 1 }
+      100% { opacity: 0 }
+    }
+    .fade-in {
+      transition: all 1s;
+    }
+    .fade-in.ng-enter{
+      opacity: 0;
+    }
+    .fade-in.ng-enter.ng-enter-active{
+      /*animation: fade-in 1s;*/
+      opacity: 1;
+    }
+    .fade-in.ng-leave{
+      /*animation: fade-out 1s;*/
+      transition: all 1s;
+      opacity: 1;
+    }
+    .fade-in.ng-leave.ng-leave-active{
+      opacity: 0;
+    }
+
+
+
+    /* ng-show */
+    .fade-in {
+      transition: 1s all;
+    }
+    .ng-hide {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body class="container" ng-controller="myController">
+<h3>angularJS动画</h3>
+<hr>
+<div class="checkbox">
+  <label>
+    <input type="checkbox" ng-model="isShow">显示动画
+  </label>
+</div>
+<div class="containers fade-in" ng-if="isShow"></div>
+<!-- ng-show/ng-hide -->
+<div class="containers fade-in" ng-show="isShow"></div>
+<div class="containers fade-in" ng-hide="!isShow"></div>
+
+<!-- ng-view -->
+<div class="viewContainer">
+  <div class="view" ng-view></div>
+  <div class="btnGroup">
+    <div class="btn" ng-click="switchPage(1)"></div>
+    <div class="btn" ng-click="switchPage(2)"></div>
+  </div>
+</div>
+
+
+<!-- ng-repeat -->
+<div>
+  {{friends.length}}
+  <input type="search" class="form-control" ng-model="q" placeholder="过滤朋友....">
+  <ul class="animate-container">
+    <li class="animate-repeat" ng-repeat="friend in friends | filter:q">
+      [{{$index+1}}],{{friend.name}}他{{friend.age}}岁
+    </li>
+  </ul>
+</div>
+
+
+<script src="js/angular.js"></script>
+<script src="js/angular-route.js"></script>
+<script src="js/angular-animate.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

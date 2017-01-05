@@ -1,0 +1,28 @@
+.animate-container {
+  list-style: none;
+  border-color: white;
+  border: 1px solid black;
+  margin: 0;
+  padding: 0 10px;
+}
+
+.animate-repeat {
+  list-style: none;
+  line-height: 40px;
+  box-sizing: border-box;
+  transition: all linear .5s;
+}
+
+.animate-repeat.ng-enter,
+.animate-repeat.ng-move,
+.animate-repeat.ng-leave.ng-leave-active {
+  opacity: 0;
+  max-height: 0;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+  opacity: 1;
+  max-height: 40px;
+}
