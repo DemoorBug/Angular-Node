@@ -32,6 +32,30 @@ for (var i=0;i&lt;em.length;i++){
 </em>
 
 
+<strong>动画(四)：在自定义指令中使用动画</strong>
+<em>$animate
+
+</em>
+
+<strong>AngularJS实现JS动画</strong>
+<em>app.animation(classname,animateFun)
+app.animation('.fade',function(){
+  return {
+    enter: function(element,done){//done 当动画结束时调用done
+      //定义并允许动画
+      //当动画结束时调用done
+
+      //也可以返回终止函数
+      return function(cancelled){
+        //关闭或者取消动画的回调函数
+      }
+    }
+  }
+})
+
+<b>js动画 很烂 居然还要引入jquery</b>
+
+</em>
 
 <strong>AngularJS高级</strong>
 <em>
